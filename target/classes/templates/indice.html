@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WENAS HEADER</title>
+        <link rel="icon" href="/apple_white.png" type="image/png" >
+    </head>
+    <body>
+        <h3>WENAS WENAS</h3>
+        <div>este es el indice</div>
+        <div>
+            <table border="2">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                </tr>
+                <tr th:each="individuo : ${individuos}">
+                    <td th:text="${individuo.nombre}"></td>
+                    <td th:text="${individuo.apellido}"></td>
+                    <td th:text="${individuo.edad}"></td>
+                    <td th:text="${individuo.correo}"></td>
+                    <td th:text="${individuo.telefono}"></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${individuos == null or individuos.empty}">
+            Sin información.
+        </div>
+        <!--<div th:text="${hola}"></div>-->
+    </body>
+</html>
