@@ -1,8 +1,9 @@
-com\example\helper\Parametro.class
-com\example\helper\DBHelper.class
 com\example\HolaSpringApplication.class
 com\example\helper\DataSource.class
-com\example\web\almacenDao.class
 com\example\web\ControladorREST.class
-com\example\dao\individuoDao.class
-com\example\domain\individuoDto.class
+com\example\helper\Parametro.class
+com\example\dao\LogDao.class
+com\example\helper\DBHelper.class
+com\example\dto\LogDto.class
+com\example\web\almacenDao.class
+.netbeans_automatic_build
