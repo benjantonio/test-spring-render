@@ -14,7 +14,7 @@ import lombok.Data;
  */
 @Entity
 @Table(name = "tb_log")
-public class LogDto implements Serializable{
+public class logDto implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
@@ -25,7 +25,7 @@ public class LogDto implements Serializable{
     private String zona;
     private String hora;
 
-    public LogDto() {
+    public logDto() {
         this.ip = "0";
         this.zona = "";
         this.hora = "";
@@ -34,7 +34,7 @@ public class LogDto implements Serializable{
 
     
     
-    public LogDto(int id_log, String ip, String zona, String hora) {
+    public logDto(int id_log, String ip, String zona, String hora) {
         this.id_log = id_log;
         this.ip = ip;
         this.zona = zona;

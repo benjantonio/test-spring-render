@@ -2,6 +2,6 @@ com\example\HolaSpringApplication.class
 com\example\helper\DataSource.class
 com\example\web\ControladorREST.class
 com\example\helper\Parametro.class
-com\example\dao\LogDao.class
 com\example\helper\DBHelper.class
-com\example\dto\LogDto.class
+com\example\dao\logDao.class
+com\example\dto\logDto.class

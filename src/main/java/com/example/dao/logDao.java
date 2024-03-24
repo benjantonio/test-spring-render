@@ -4,7 +4,7 @@
  */
 package com.example.dao;
 
-import com.example.dto.LogDto;
+import com.example.dto.logDto;
 import com.example.helper.DBHelper;
 import com.example.helper.Parametro;
 import java.sql.SQLException;
@@ -21,11 +21,11 @@ import org.springframework.stereotype.Repository;
  * @author Benjantonio
  */
 @Repository
-public interface LogDao extends CrudRepository<LogDto, Long> {
+public interface logDao extends CrudRepository<logDto, Long> {
     
-    Log _log = LogFactory.getLog(LogDao.class);
+    Log _log = LogFactory.getLog(logDao.class);
      
-    public static int Guardar_Log(LogDto log)
+    public static int Guardar_Log(logDto log)
     {
         ArrayList parametros = new ArrayList();
         parametros.add(new Parametro("p_ip", "String", log.getIp(), false));
@@ -43,14 +43,14 @@ public interface LogDao extends CrudRepository<LogDto, Long> {
     private static ArrayList ListaEntidad(String query, List parametros)
     {
         ArrayList lista = new ArrayList();
-        LogDto aux = null;
+        logDto aux = null;
         try{
             
             DBHelper dbh = new DBHelper();
             CachedRowSet crs=(CachedRowSet) dbh.listar(query, parametros);
            
             while(crs.next()) {
-                aux = new LogDto();
+                aux = new logDto();
                 aux.setIp(crs.getString("ip"));   
                 aux.setZona(crs.getString("zona"));   
                 aux.setHora(crs.getString("hora"));         
@@ -67,7 +67,7 @@ public interface LogDao extends CrudRepository<LogDto, Long> {
         
         if(lista.isEmpty())
         {
-            lista.add(new LogDto());
+            lista.add(new logDto());
         }
         return lista;
     } 
