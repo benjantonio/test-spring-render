@@ -7,7 +7,6 @@ package com.example.dao;
 import com.example.dto.LogDto;
 import com.example.helper.DBHelper;
 import com.example.helper.Parametro;
-import com.example.web.almacenDao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +14,16 @@ import javax.sql.rowset.CachedRowSet;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Benjantonio
  */
-public interface LogDao extends CrudRepository<LogDto, Long>{
+@Repository
+public interface LogDao extends CrudRepository<LogDto, Long> {
     
-    Log _log = LogFactory.getLog(almacenDao.class);
+    Log _log = LogFactory.getLog(LogDao.class);
     
     public static int Guardar_Log(LogDto log)
     {

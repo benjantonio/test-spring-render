@@ -5,4 +5,3 @@ com\example\helper\Parametro.class
 com\example\dao\LogDao.class
 com\example\helper\DBHelper.class
 com\example\dto\LogDto.class
-com\example\web\almacenDao.class
