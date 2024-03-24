@@ -44,10 +44,10 @@ public class ControladorREST {
         log.setIp(ipAddress);
         log.setZona(country);
         log.setHora("500");
-        almacenDao.Guardar_Log(log);
+        LogDao.Guardar_Log(log);
         
          // Obtener la lista de individuos nuevamente
-        ArrayList<LogDto> logs = almacenDao.Listar_Logs();
+        ArrayList<LogDto> logs = LogDao.Listar_Logs();
         Collections.reverse(logs);
         
         System.out.println("size logs: "+logs);
