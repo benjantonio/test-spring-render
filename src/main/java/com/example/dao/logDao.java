@@ -24,7 +24,7 @@ import org.springframework.stereotype.Repository;
 public interface LogDao extends CrudRepository<LogDto, Long> {
     
     Log _log = LogFactory.getLog(LogDao.class);
-    
+     
     public static int Guardar_Log(LogDto log)
     {
         ArrayList parametros = new ArrayList();
