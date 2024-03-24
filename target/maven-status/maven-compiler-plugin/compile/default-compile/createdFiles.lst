@@ -1,5 +1,5 @@
+com\example\helper\DBConnectionPool.class
 com\example\HolaSpringApplication.class
-com\example\helper\DataSource.class
 com\example\web\ControladorREST.class
 com\example\helper\Parametro.class
 com\example\helper\DBHelper.class

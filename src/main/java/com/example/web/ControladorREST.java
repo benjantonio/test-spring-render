@@ -35,8 +35,6 @@ public class ControladorREST {
             ipAddress = request.getRemoteAddr();
         }
         
-        System.out.println("la ip: "+ipAddress);
-        
         Locale locale = Locale.getDefault();
         String country = locale.getCountry();
         
@@ -50,8 +48,6 @@ public class ControladorREST {
         ArrayList<logDto> logs = logDao.Listar_Logs();
         Collections.reverse(logs);
         
-        System.out.println("size logs: "+logs);
-
         model.addAttribute("logs", logs);
         
         return "indice";

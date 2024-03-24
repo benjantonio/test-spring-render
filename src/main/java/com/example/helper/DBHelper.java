@@ -36,7 +36,7 @@ public class DBHelper {
         try {
             
             //conn = GlobalPool.getConnection("ECOMMERCE");
-            conn = DataSource.getInstance().getConnection();
+            conn = DBConnectionPool.getInstance().getConnection();
             ps = conn.prepareCall(query);
             
             if(parametros != null){
@@ -96,7 +96,7 @@ public class DBHelper {
         
         try {
             //conn = GlobalPool.getConnection("ECOMMERCE");
-            conn = DataSource.getInstance().getConnection();
+            conn = DBConnectionPool.getInstance().getConnection();
             ps = conn.prepareCall(query);
             
             if(parametros != null){
@@ -157,7 +157,7 @@ public class DBHelper {
         
         try {
             //conn = GlobalPool.getConnection("ECOMMERCE");
-            conn = DataSource.getInstance().getConnection();
+            conn = DBConnectionPool.getInstance().getConnection();
             ps = conn.prepareCall(query);
             
             if(parametros != null){
@@ -249,7 +249,7 @@ public class DBHelper {
         
         try {
            
-            conn = DataSource.getInstance().getConnection();
+            conn = DBConnectionPool.getInstance().getConnection();
            
             ps = conn.prepareCall(query);
                                              
