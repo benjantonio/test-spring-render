@@ -46,10 +46,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="individuo : ${individuos}">
-                            <td th:text="${individuo.ip}"></td>
-                            <td th:text="${individuo.zona}"></td>
-                            <td th:text="${individuo.hora}"></td>
+                        <tr th:each="log : ${logs}">
+                            <td th:text="${log.ip}"></td>
+                            <td th:text="${log.zona}"></td>
+                            <td th:text="${log.hora}"></td>
                         </tr>
                         </tbody>
                     </table>

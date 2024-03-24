@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.example.dao.LogDao;
 import com.example.dto.LogDto;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import static java.util.Collections.reverse;
 import java.util.Locale;
@@ -27,31 +28,31 @@ public class ControladorREST {
     private LogDao individuoDao;
     
     @GetMapping("/")
-    public String comienzo(Model model){
+    public String comienzo(Model model,HttpServletRequest request){
         
-        return "indice";
-    }
-    
-    @PostMapping("/guardar-ip")
-    public String guardarIP(@RequestParam String ip,  Model model) {
-      
+        String ipAddress = request.getHeader("X-Forwarded-For");
+        if (ipAddress == null || ipAddress.isEmpty()) {
+            ipAddress = request.getRemoteAddr();
+        }
+        
+        System.out.println("la ip: "+ipAddress);
+        
         Locale locale = Locale.getDefault();
         String country = locale.getCountry();
         
-        LogDto ind = new LogDto();
+        LogDto log = new LogDto();
+        log.setIp(ipAddress);
+        log.setZona(country);
+        log.setHora("500");
+        almacenDao.Guardar_Log(log);
         
-        ind.setIp(ip);
-        ind.setZona(country);
-        ind.setHora("500");
+         // Obtener la lista de individuos nuevamente
+        ArrayList<LogDto> logs = almacenDao.Listar_Logs();
+        Collections.reverse(logs);
         
-        almacenDao.Guardar_Log(ind);
-        
-          // Obtener la lista de individuos nuevamente
-    ArrayList<LogDto> listaIndividuos = almacenDao.Listar_Logs();
-    Collections.reverse(listaIndividuos);
-    
-    // Añadir la lista de individuos al modelo
-    model.addAttribute("individuos", listaIndividuos);
+        System.out.println("size logs: "+logs);
+
+        model.addAttribute("logs", logs);
         
         return "indice";
     }
