@@ -1,0 +1,60 @@
+{% extends 'planilla.html' %} {% load static %} {% block content %}
+<div class="vets">
+    <div class="tituloVets">
+        <h2>Veterinarios <span class="username">{{user.username}}</span></h2>
+    </div>
+    {% if veterinarios %}
+    <table id="tablaVets">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Contraseña</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        {% for vet in veterinarios %}
+        <tbody>
+            <tr>
+                <td>{{vet.nombre_completo}}</td>
+                <td>{{vet.correo}}</td>
+                <td>
+                    <form><input type="text" value="{{vet.id_veterinario}}" class="idV" style="display: none;"><input type="password" class="passwordVet"></form>
+                </td>
+                <td><button class="entrarVet" onclick="avisoClaveIncorrecta()"><a id="verMas" class="desahabilitado" href="{% url 'panelVeterinario' vet.id_veterinario %}">Ver más</a></button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+    {% else %}
+    <h2 style="width: 100%; text-align:center; font-family: 'Yanone Kaffeesatz', sans-serif;">No cuenta con veterinarios registrados. Favor registrar.</h2>
+    <hr> {% endif %}
+</div>
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ingrese su clave</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<script type="text/javascript" charset="utf8" src="https:////cdn.datatables.net/v/bs4/dt-1.10.20.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+<script src="{% static 'js/vet.js' %}"></script>
+
+
+
+{% endblock %}

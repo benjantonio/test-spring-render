@@ -1,0 +1,300 @@
+{% extends 'planilla.html' %} {% load static %} {% block content %}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+<script type="text/JavaScript" src="https://MomentJS.com/downloads/moment-with-locales.js"></script>
+
+<body class="body-foro">
+
+    <div id="contenedor-foro" class="contenedor-foro container">
+        <div style="width: 1px; height: 1px;"></div>
+
+        {% if usuarioOnline %}
+        {% for usuarioOn in usuarioOnline %}
+        <div class="id_usuario_on" style="display: none; opacity: 0;">{{usuarioOn.id_usuario}}</div>
+
+        <div class="part1-foro">
+            <div class="titulo-p1">
+                <h5 style="color: white;">¡Hola {{usuarioOn.nombres}} {{usuarioOn.apellidos}}!</h5>
+            </div>
+
+            <h5 style="margin-top: 12px; font-weight: 200;">¿Qué quieres hacer?</h5>
+
+            <div class="contendor-botones-online">
+
+                <div class="btn-agregar-publicacion" onclick="abrirAgregarPublicacion();">
+                    <p>+Agregar Publicación</p>
+                </div>
+
+                <div class="btn-ver-publicaciones" onclick="abrirVerPublicaciones();">
+                    <p>Ver mis Publicaciones</p>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}{% else %}
+        <div class="id_usuario_on" style="display: none; opacity: 0;">0</div>
+        {% endif %}
+
+
+        <div class="part2-foro">
+            <h4 style="text-align: center; margin: 35px 30% 0 30%; background: #6e6e6e; padding: 10px 0; color: white; border-radius: 10px 10px 0 0;">Publicaciones</h4>
+            <div class="contenedor-publicacion">
+                <div class="header-lista-publicaciones">
+                    <h4 class="titulo-header">TEMA</h4>
+                    <h4 class="titulo-header">CREACIÓN</h4>
+                </div>
+
+
+                {% if publicacionesAll %}
+                {% for publicacion in publicacionesAll %}
+                <div class="publicacion"
+                    onclick="abrirPublicacion('{{publicacion.id_cliente.id_usuario}}','{{publicacion.id_publicacion}}','{{publicacion.id_cliente.nombres}} {{publicacion.id_cliente.apellidos}}','{{publicacion.fecha}}','{{publicacion.hora}}','{{publicacion.titulo}}','{{publicacion.mensaje}}');">
+                    <div class="contenido-izq-publicacion">
+
+                        <div class="titulo-publicacion">
+                            <h4>
+                                <span style="vertical-align: middle; padding-bottom: 5px; "
+                                    class="material-symbols-outlined">subtitles</span>
+                                TITULO:<span class="titulo-publicacion-text">{{publicacion.titulo}}
+                                </span>
+                            </h4>
+                        </div>
+
+                        <div class="creador-publicacion">
+                            <h6>
+                                <span style="vertical-align: middle; padding-bottom: 5px; "
+                                    class="material-symbols-outlined">accessibility_new</span>
+                                Creador:<span class="creador-publicacion-text">{{publicacion.id_cliente.nombres}}
+                                    {{publicacion.id_cliente.apellidos}}
+                                </span>
+                            </h6>
+                        </div>
+                    </div>
+
+                    <div class="contenido-der-publicacion">
+                        <div class="fecha-publicacion">
+                            <h5>
+                                <span style="vertical-align: middle; padding-bottom: 5px; "
+                                    class="material-symbols-outlined">today</span>
+                                Fecha:<span class="titulo-publicacion-text2"><br>- {{publicacion.fecha}}<br>-
+                                    {{publicacion.hora}}hrs.
+                                </span>
+                            </h5>
+                        </div>
+
+                        <div class="cant-respuestas">
+                                <p style="margin: 0; padding: 0;  text-align: center;">
+                                    <span style="vertical-align: middle; padding-bottom: 2px; justify-content: center;" class="material-symbols-outlined">comment</span>
+                                    {{publicacion.cantRespuestas}}
+                                </p>
+                        </div>
+
+                        <div class="publicacion-ver" style="text-align: right;">
+                            <h5>
+                                Ver
+                                <span style="vertical-align: middle; padding-bottom: 2px; "
+                                    class="material-symbols-outlined">arrow_right_alt</span>
+                                </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="separador-publicacion">
+                </div>
+                {% endfor %}
+                {% endif %}
+
+
+            </div>
+        </div>
+
+        <div class="part3-foro" style="display: none; opacity: 0;">
+
+                <span onclick="reiniciarPag();" class="material-symbols-outlined" style="margin: 10px 0 0 5%; color: white; border-radius: 50%; background: rgb(65, 65, 65); cursor: pointer; font-size: 40px; padding: 5px; box-shadow: 0.1rem 0.1rem 0.2rem 0.1rem #0000003b;">
+                    arrow_back
+                </span>
+
+            <h4 style="text-align: center; margin: -40px 30% 0 30%; background: #6e6e6e; padding: 10px 0; color: white; border-radius: 10px 10px 0 0;">Crear Publicación</h4>
+            <div class="contenedor-crear-pub" style="background: white; text-align: center; padding: 30px 30px 10px 30px; margin: 0 20% 0 20%; border-radius: 10px;">
+                <div class="contenedor-titulo" style="padding-bottom: 10px;  color: #349fdd; ">
+                    <h5>Titulo:</h5>
+                    <input style="width: 60%;" placeholder="Escribe una Título..." class="tituloNewText" type="text">
+                </div>
+                <div class="contenedor-descripcion" style="margin-top: 30px; color: #349fdd;">
+                    <h5>Descripción:</h5>
+                    <textarea class="descripcionNewTxt" style="margin: 0; width: 80%;" maxlength="500" spellcheck="false"
+                    placeholder="Escribe una descripción..." required></textarea>
+                </div>
+
+                <button class="agregarPublicacion" onclick="agregarPublicacion();">Agregar</button>
+            </div>
+        </div>
+
+        <div class="part4-foro" style="display: none; opacity: 0; ">
+
+            <span onclick="reiniciarPag();" class="material-symbols-outlined" style="margin: 10px 0 0 5%; color: white; border-radius: 50%; background: rgb(65, 65, 65); cursor: pointer; font-size: 40px; padding: 5px; box-shadow: 0.1rem 0.1rem 0.2rem 0.1rem #0000003b;">
+                arrow_back
+            </span>
+            <h4 style="text-align: center; margin: -35px 30% 0 30%; background: #6e6e6e; padding: 10px 0; color: white; border-radius: 10px 10px 0 0;">Tus Publicaciones</h4>
+            <div class="contenedor-publicacion">
+                <div class="header-lista-publicaciones">
+                    <h4 class="titulo-header">TEMA</h4>
+                    <h4 class="titulo-header">CREACIÓN</h4>
+                </div>
+
+
+                {% if publicacionesOnline %}
+                {% for publicacion in publicacionesOnline %}
+                <div class="publicacion"
+                    onclick="abrirPublicacion2('{{publicacion.id_cliente.id_usuario}}','{{publicacion.id_publicacion}}','{{publicacion.id_cliente.nombres}} {{publicacion.id_cliente.apellidos}}','{{publicacion.fecha}}','{{publicacion.hora}}','{{publicacion.titulo}}','{{publicacion.mensaje}}');">
+                    <div class="contenido-izq-publicacion">
+
+                        <div class="titulo-publicacion">
+                            <h4>
+                                <span style="vertical-align: middle; padding-bottom: 5px; "
+                                    class="material-symbols-outlined">subtitles</span>
+                                TITULO:<span class="titulo-publicacion-text">{{publicacion.titulo}}
+                                </span>
+                            </h4>
+                        </div>
+
+                        <div class="creador-publicacion">
+                            <h6>
+                                <span style="vertical-align: middle; padding-bottom: 5px; "
+                                    class="material-symbols-outlined">accessibility_new</span>
+                                Creador:<span class="creador-publicacion-text">{{publicacion.id_cliente.nombres}}
+                                    {{publicacion.id_cliente.apellidos}}
+                                </span>
+                            </h6>
+                        </div>
+                    </div>
+
+                    <div class="contenido-der-publicacion">
+                        <div class="fecha-publicacion">
+                            <h5>
+                                <span style="vertical-align: middle; padding-bottom: 5px; "
+                                    class="material-symbols-outlined">today</span>
+                                FECHA:<span class="titulo-publicacion-text"><br>- {{publicacion.fecha}}<br>-
+                                    {{publicacion.hora}}hrs.
+                                </span>
+                            </h5>
+                        </div>
+
+                        <div class="publicacion-ver" style="text-align: right;">
+                            <h5>
+                                Ver
+                                <span style="vertical-align: middle; padding-bottom: 2px; "
+                                    class="material-symbols-outlined">arrow_right_alt</span>
+                                </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="separador-publicacion">
+                </div>
+                {% endfor %}
+                {% else %}
+                <div style="background: white; height: 2rem; color: #7a7a7a; text-align: center; padding: 20px 0 50px 0;">
+                    <p style="margin: 0; ">¡Oooh! Aún no has creado ninguna publicación.</p>
+                </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="contenedorPublicacion" class="contenedorPublicacion">
+        <div class="detalle-publicacion">
+            <div class="part1-detalle">
+                <div class="contenedor-info-top">
+                    <h5>Publicación</h5>
+                    <img src='{% static "img/publicacion-foro.png" %}' alt="">
+                </div>
+                <div class="contenedor-info">
+                    <p class="p-subtitulos">Creador:</p>
+                    <p class="creadorPublicacionTxt"></p>
+                </div>
+                <div class="contenedor-info">
+                    <p class="p-subtitulos">Publicaciones:</p>
+                    <p class="cantPublicacionesTxt"></p>
+                </div>
+                <div id="cerrar-detalle-btn" class="eliminar-publicacion" onclick="eliminarPublicacion();"><span
+                    class="material-symbols-outlined">delete</span>
+                <p>Eliminar</p>
+            </div>
+            </div>
+
+            <div class="part2-detalle part2-publi">
+                <div class="header-descripcion-pub">
+                    <div class="fecha-header-publi">
+                        <h6>
+                            <span style="vertical-align: middle; padding-bottom: 5px;"
+                                class="material-symbols-outlined">today</span>
+                            FECHA:<span class="titulo-publicacion-text fechaPublicacionTxt">
+                            </span>
+                        </h6>
+                    </div>
+                </div>
+                <div class="contenedor-descripcion-pub">
+
+                    <div class="titulo-publicacion" style="text-align: left; margin: 10px 20px 10px 20px;">
+                        <h4 style="color: #0cac49;">
+                            <span style="vertical-align: middle; padding-bottom: 5px; "
+                                class="material-symbols-outlined">subtitles</span>
+                            TITULO:<span class="tituloPublicacionTxt"
+                                style="font-size: 20px; margin-left: 5px; font-weight: 600; color: #3f3f3f; ">
+                            </span>
+                        </h4>
+                    </div>
+
+                    <div>
+                        <p class="descripcionPublicacionTxt" style="margin: 10px 20px; text-align: left;"> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="respuesta-on">
+            <div class="escribir-respuesta">
+                <h5>Escribir respuesta: </h5>
+                <textarea class="respuestaForo" style="margin: -15px 15px 0px 15px;" maxlength="500" spellcheck="false"
+                    placeholder="Escribe una respuesta" required></textarea>
+                <div class="contenedor-boton-env">
+                    <button class="btn-enviarResp" onclick="enviarRespuesta();">Enviar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="respuesta-off" style="padding: 0 20rem;">
+            <div class="escribir-respuesta-off">
+                <p style="margin: 0; color: rgb(184, 14, 14);">Inicia sesión para comentar.</p>
+
+            </div>
+        </div>
+
+
+        <div id="zona-respuestas">
+        </div>
+
+
+
+        <div id="cerrar-detalle-btn" class="cerrar-detalle" onclick="cerrarPublicacion();"><span
+                class="material-symbols-outlined">arrow_back</span>
+            <p>Regresar</p>
+        </div>
+
+    </div>
+
+
+</body>
+
+<div id="fondoNegroBlur2" class="fondoNegroBlur2" onclick="cerrarPublicacion();">
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script src="{% static 'js/foro.js' %}"></script>
+{% endblock %}

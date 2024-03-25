@@ -1,0 +1,427 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Hora</title>
+
+    <!-- LINK CSS agendarHora -->
+    <link rel="stylesheet" type="text/css" href='{% static "css/agendarHora.css" %}'>
+
+    <!--ICONOS GOOGLE FONT-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap,Titillium+Web:wght@300&display=swap,Dosis:wght@300&display=swap" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <!--MOMENT-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+    <script type="text/JavaScript" src="https://MomentJS.com/downloads/moment-with-locales.js"></script>
+
+    <!--Boostrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+    <!-- CREDENCIALES EMAILJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function() {
+    emailjs.init("user_2dvP8WMfROCaNvPYMdizJ");
+    })();
+    </script>
+</head>
+
+
+<body>
+    {% if usuarioLogeado %} {% for usuarioOn in usuarioLogeado %}
+    <p class="nombreCliente" style="display: none;">{{usuarioOn.nombres}} {{usuarioOn.apellidos}}</p>
+    <p class="correoCliente" style="display: none;">{{usuarioOn.email}}</p>
+    {% endfor %}{% endif %}
+  
+
+    <div style="display: grid; justify-content: center; margin-top: 100px;">
+        <div class="btnVolver">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <a class="btnA" href="{% url 'home' %}" style="text-decoration: none;">
+                <p class="p-btn">Volver</p>
+            </a>
+        </div>
+    </div>
+
+    <br>
+
+    <section class="contenedor">
+        <div class="cuadrito">
+
+            <div class="cuadroFondo1">
+                <h2>Agendar Hora</h2>
+                <h5>Ingresa los siguientes datos para buscar una hora</h5>
+                <img src='{% static "img/MUNDO_PATITAS.png" %}' alt="Logo">
+            </div>
+
+
+
+            <div class="cuadroFondo2">
+
+                <!--SELECT MOTIVO DE CONSULTA-->
+                <div class="form-floating col formulario">
+                    <select id="consulta" class="form-control consulta" name="consulta">
+                        <option selected disabled></option>
+                        <option value="General">General</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                    <label for="floatingSelect">Motivo Consulta</label>
+                </div>
+
+                <br>
+
+                <!--SELECT MASCOTA-->
+                <div class="form-floating col formulario2">
+                    <select disabled id="mascota" class="form-control mascota" name="mascota">
+                        <option selected disabled></option>
+                        {% for mascotas in mascotas %}
+                        <option value="{{mascotas.id_mascota}}">{{mascotas.nombre}}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="floatingSelect">Selecciona una mascota</label>
+                </div>
+
+                <!--SELECTOR CENTRO MEDICO VETERINARIO-->
+                <div class="form-floating col formulario">
+                    <select disabled id="centroA" class="form-control centroA" name="centroA">
+                        <option selected disabled></option>
+                        <optgroup label="V Región">
+
+                            {% for comuna in comunaV %}
+                            {% for centro in centro %}
+                            {% if centro.comuna_id == comuna.id_comuna %}
+
+                        <optgroup style="color: rgb(88, 88, 88); font-weight: bolder; font-size: 15px;"
+                            label="&nbsp;&nbsp;&nbsp;{{comuna.nombre_comuna}}">
+                            {% if centro %}
+
+                            {% if centro.comuna_id == comuna.id_comuna %}
+                            <option value="{{centro.id_usuario}}">&nbsp;&nbsp;&nbsp;{{centro.nombres}}
+                                {{centro.apellidos}}</option>
+                            {% endif %}
+
+                            {% endif %}
+                        </optgroup>
+
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+
+                        </optgroup>
+
+                        <optgroup label="Metropolitana">
+                            {% for comuna in comunaM %}
+                            {% for centro in centro %}
+                            {% if centro.comuna_id == comuna.id_comuna %}
+
+                        <optgroup style="color: rgb(88, 88, 88); font-weight: bolder; font-size: 15px;"
+                            label="&nbsp;&nbsp;&nbsp;{{comuna.nombre_comuna}}">
+                            {% if centro %}
+
+                            {% if centro.comuna_id == comuna.id_comuna %}
+                            <option value="{{centro.id_usuario}}">&nbsp;&nbsp;&nbsp;{{centro.nombres}}
+                                {{centro.apellidos}}</option>
+                            {% endif %}
+
+                            {% endif %}
+                        </optgroup>
+
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                        </optgroup>
+                    </select>
+                    <label for="floatingSelect">Selecciona un centro veterinario</label>
+                </div>
+
+
+                <!--SELECT VETERINARIO-->
+                <div class="form-floating col formulario">
+                    <select disabled id="veterinario" class="form-control veterinario" name="veterinario">
+                        <option selected disabled></option>
+                        <!--EL CONTENIDO VIENE DE agendarHora.js CON AJAX-->
+                    </select>
+                    <label for="floatingSelect">Selecciona un Veterinario</label>
+                </div>
+
+
+                <!--BOTON CONTINUAR - DESHABILITADO-->
+                <div class="btnContinuarApagado">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                    <p class="p-btn">Buscar Hora</p>
+                </div>
+                <!--BOTON CONTINUAR - HABILITADO -->
+                <a id="btnContinuar" type="submit">
+                    <div class="btnContinuar">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                        <p class="p-btn">Buscar Hora</p>
+                        <!--SE HABILITA CUANDO SE REALIZA UN CAMBIO EN EL SELECT VETERINARIO-->
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!----------------------------------------------------------------------------------------------------------------------------->
+        <br>
+
+        <div class="cuadrito2">
+
+            <h5>Seleccionar hora</h5>
+
+            <div class="contenedor-card">
+                <div class="cuadroFormulario">
+                    <div class="form-floating col formulario sel1">
+                        <select id="diaConsulta" class="form-control diaConsulta" name="diaConsulta">
+                            <option selected disabled></option>
+                            <!--EL CONTENIDO VIENE DE agendarHora.js CON AJAX-->
+                        </select>
+                        <label for="floatingSelect">Selecciona una fecha</label>
+                    </div>
+
+                    <div class="form-floating col formulario sel2">
+                        <select disabled id="horaConsulta" class="form-control horaConsulta" name="horaConsulta">
+                            <option selected disabled></option>
+                            <!--EL CONTENIDO VIENE DE agendarHora.js CON AJAX-->
+                        </select>
+                        <label for="floatingSelect">Selecciona una hora</label>
+                    </div>
+                </div>
+
+                <div class="info_vet">
+                    <h6>Veterinario:</h6>
+                    <img class="fotoVet" src='{% static "img/medVete.png" %}' alt="">
+                    <p class="nombreVet" style="font-size: 35px; font-weight: 100;"></p>
+                </div>
+
+                <div>
+
+                    <h5>Valoracion:</h5>
+
+                    <div class="contenedor-patitas">
+                        <img class="img-huella" id="huellaActiva1" src='{% static "img/panelVeterinario/huella-veterinario.png" %}' alt="patitActiva">
+                        <img class="img-huella" id="huellaActiva2" src='{% static "img/panelVeterinario/huella-veterinario.png" %}' alt="patitActiva">
+                        <img class="img-huella" id="huellaActiva3" src='{% static "img/panelVeterinario/huella-veterinario.png" %}' alt="patitActiva">
+                        <img class="img-huella" id="huellaActiva4" src='{% static "img/panelVeterinario/huella-veterinario.png" %}' alt="patitActiva">
+                        <img class="img-huella" id="huellaActiva5" src='{% static "img/panelVeterinario/huella-veterinario.png" %}' alt="patitActiva">
+
+                        <img class="img-huella" id="huellaInactiva1" src='{% static "img/panelVeterinario/huella-veterinario-inactiva.png" %}' alt="patitaInactiva">
+                        <img class="img-huella" id="huellaInactiva2" src='{% static "img/panelVeterinario/huella-veterinario-inactiva.png" %}' alt="patitaInactiva">
+                        <img class="img-huella" id="huellaInactiva3" src='{% static "img/panelVeterinario/huella-veterinario-inactiva.png" %}' alt="patitaInactiva">
+                        <img class="img-huella" id="huellaInactiva4" src='{% static "img/panelVeterinario/huella-veterinario-inactiva.png" %}' alt="patitaInactiva">
+                        <img class="img-huella" id="huellaInactiva5" src='{% static "img/panelVeterinario/huella-veterinario-inactiva.png" %}' alt="patitaInactiva">
+                    </div>
+                    <div class="message-valoracion-1" style="display: none;">
+                        <h6 style="margin-top: 2rem; text-align:center;"> ¡Este veterinario no tiene valoraciones!
+                        </h6>
+                        <p style="text-align:center; font-size: 13px;">Los clientes atendidos podrán valorar la atención de un veterinario. Recuerda valorar tu consulta para ayudar a la comunidad.</p>
+                    </div>
+                    <div style="display: none; text-align: center;" class="message-valoracion-2">
+
+                        <h6 style="margin-top: 2rem; text-align:center;"> ¡Tiene <span id="cantPatitas">0</span> patitas!
+                        </h6>
+
+                        <p class="descripcion-valoracion-1" style="font-size: 13px; display: none; margin: 0;">¡Este veterinario tiene una valoracion baja!</p>
+                        <p class="descripcion-valoracion-2" style="font-size: 13px; display: none; margin: 0;">Este veterinario tiene una valoracion regular</p>
+                        <p class="descripcion-valoracion-3" style="font-size: 13px; display: none; margin: 0;">¡Este veterinario tiene muy buena reputación!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTON CONTINUAR -->
+            <a id="btnFinal" type="submit">
+                <div class="btnFinal">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                    <p class="p-btn">Continuar</p>
+                </div>
+            </a>
+            <!-- BOTON CONTINUAR DESHABILIDATO -->
+            <a id="btnFinalDeshabilitado" type="submit">
+                <div class="btnFinalDeshabilitado">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                    <p class="p-btn">Continuar</p>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="detalleFinal" id="detalleFinal">
+            <div class="fondo">
+                <div class="cardDetalle">
+                    <!-- <div class="cardDetalle1">
+                        <p class="subTitulo">Resumen</p>
+                        <img class="fotoVet" src='{% static "img/medVete.png" %}' alt="">
+
+                        <p class="subTitulo">Centro Médico</p>
+                        <p class="centroR" style="font-size: 18px; font-weight: 200;"></p>
+
+                        <p class="subTitulo">Veterinario </p>
+                        <p class="nombreVetR" style="font-size: 18px; font-weight: 200;"></p>
+
+                    </div>
+
+                    <div class="cardDetalle2">
+
+                        <div class="sec1">
+                            <div class="motivoS">
+                                <p class="subTitulo">Motivo Consulta</p>
+                                <p class="motivoConsultaR" style="font-size: 18px; font-weight: 200;"></p>
+                            </div>
+
+                            <div class="mascotaS">
+                                <p class="subTitulo">Mascota</p>
+                                <p class="mascotaR" style="font-size: 18px; font-weight: 200;"></p>
+                            </div>
+                        </div>
+                        <div class="sec2">
+                            <div>
+                                <p class="subTitulo">Día de la consulta:</p>
+                                <p class="fechaR" style="font-size: 18px; font-weight: 200;"></p>
+                            </div>
+
+                            <div>
+                                <p class="subTitulo">Hora:</p>
+                                <p class="horaR" style="font-size: 18px; font-weight: 200;"></p>
+                            </div>
+                        </div>
+                        <div class="sec3">
+                            <p class="subTitulo">Dirección:</p>
+                            <p id="direccionR" style="font-size: 18px; font-weight: 200;"></p>
+                        </div>
+
+                    </div> -->
+                    <div class="cardDetalle1">
+                        <p class="subTitulo">Resumen</p>
+                        <img class="fotoVet" src='{% static "img/medVete.png" %}' alt="">
+                    </div>
+                    <form id="formHora" method="post" action="">
+                        {% csrf_token %}
+                        <!-- <img class="fotoVet" src='{% static "img/medVete.png" %}' alt=""> -->
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="subTitulo">Centro Médico</p>
+                                <input class="centroR form-control" name="centro" style="font-size: 18px; font-weight: 200; border: none;" disabled>
+                            </div>
+
+
+                            <div class="col-xs-12 col-md-6">
+                                <p class="subTitulo">Veterinario </p>
+                                <input class="nombreVetR form-control" name="veterinario" style="font-size: 18px; font-weight: 200;border: none;" disabled>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-xs-12 col-md-6">
+                                <p class="subTitulo">Motivo Consulta</p>
+                                <input class="motivoConsultaR form-control" name="consulta" style="font-size: 18px; font-weight: 200;border: none;" disabled>
+                            </div>
+
+
+                            <div class="col-xs-12 col-md-6">
+                                <p class="subTitulo">Mascota</p>
+                                <input class="mascotaR form-control" name="mascota" style="font-size: 18px; font-weight: 200;border: none;" disabled>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="subTitulo">Día de la consulta:</p>
+                                <input class="fechaR form-control" name="fecha" style="font-size: 18px; font-weight: 200;border: none;" disabled>
+                            </div>
+
+
+                            <div class="col-xs-12 col-md-6">
+                                <p class="subTitulo">Hora:</p>
+                                <input class="horaR form-control" name="hora" style="font-size: 18px; font-weight: 200;border: none;" disabled>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="subTitulo">Dirección:</p>
+                                <input id="direccionR" class="form-control" style="font-size: 18px; font-weight: 200; border: none;" disabled>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <p class="subTitulo">Correo:</p>
+                                <input id="correoR" class="form-control" name="correo" style="font-size: 18px; font-weight: 200; border: none;" disabled>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="fondo2">
+                <div class="cardfondo2">
+                    <div class="cardfondo3">
+                        <div>
+                            <p class="subTitulo">IMPORTANTE</p>
+                            <p style="font-size: 16px; font-weight: 400;">
+                                Recuerda llegar con al menos 10 minutos de anticipación, llevar el carnet de tu mascota y todos los datos necesarios para que tu veterinario pueda brindarte la mejor atención posible.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="botones">
+
+                <!-- BOTON CONFIRMAR -->
+                <a id="btnConfirmar" type="submit" onclick="alertaConfirmacion();">
+                    <div class="btnConfirmar">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                        <p class="p-btn">Tomar Hora</p>
+                    </div>
+                </a>
+
+                <!-- BOTON CANCELAR -->
+                <a id="btnCancelar" type="submit">
+                    <div class="btnCancelar">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                        <p class="p-btn">Cancelar</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- FONDO NEGRO BLUR TAPA TODA LA PANTALLA -->
+        <div id="fondoNegroBlur" class="fondoNegroBlur">
+        </div>
+
+    </section>
+
+
+    <!-- JAVASCRIPT AGENDARHORA.JS -->
+    <script src="{% static 'js/agendarHora.js' %}"></script>
+    <!-- SWEETALERT -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,107 @@
+{% extends 'planilla.html' %} {% load static %} {% block content %}
+
+<div class="container-fluid inicio res">
+    <h2>Registro Mundo Patitas</h2>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: red;text-transform:uppercase;list-style:none ;">{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+    <form id="form" method="POST">
+        {% csrf_token %}
+        <div class="row ">
+            <div id="usuario" class="col-xs-12 col-md-6">
+                <label class="form-label" for="">Usuario</label>
+                <input class="form-control" id="user" type="text" name="username">
+                <span class="oculto">Usuario Invalido. Debe ingresar minimo 4 caracteres</span>
+            </div>
+            <div id="password" class="col-xs-12 col-md-6">
+                <label class="form-label" for="">Contraseña</label>
+                <input class="form-control" type="password" name="password">
+                <span class="oculto">Contraseña Invalida. Debe ingresar minimo 8 caracteres e incluir numeros</span>
+            </div>
+        </div>
+        <div class="row ">
+            <div id="nombre" class="col-xs-12 col-md-6">
+                <label class="form-label" for="">Nombe</label>
+                <input class="form-control" type="text" placeholder="" name="nombres">
+                <span class="oculto">Nombre Invalido. Debe ingresar minimo 3 caracteres, sin numeros</span>
+            </div>
+            <div id="apellido" class="col-xs-12 col-md-6">
+                <label class="form-label" for="">Apellido</label>
+                <input class="form-control" type="text" placeholder="" name="apellidos">
+                <span class="oculto">Nombre Invalido. Debe ingresar minimo 3 caracteres, sin numeros</span>
+            </div>
+        </div>
+        <div class="row ">
+            <div id="celular" class="col-xs-12 col-md-6">
+                <label class="form-label" for="">Celular</label><br>
+                <input class="form-control" type="number" placeholder="987654321" name="celular">
+                <span class="oculto">Celular Invalido. Debe ingresar 9 digitos</span>
+            </div>
+            <div id="correo" class="col-xs-12 col-md-6">
+                <label for="">Correo</label><br>
+                <input class="form-control" type="email" name="email">
+                <span class="oculto">Correo Invalido. Debe ingresar un correo con el formato correcto</span>
+            </div>
+        </div>
+        <div class="row ">
+            <div id="edad" class="col-xs-12 col-md-6">
+                <label class="form-label" for="">Edad</label><br>
+                <input class="form-control" type="number" name="edad">
+                <span class="oculto">Edad Invalida. Debe ser mayor de edad</span>
+            </div>
+            <div id="direccion" class="col-xs-12 col-md-6">
+                <label class="form-label" for="">Dirección</label>
+                <input class="form-control" type="text" name="direccion">
+                <span class="oculto">Dirección Invalida. Debe ingresar minimo ...</span>
+            </div>
+        </div>
+        <div class="row ">
+            <div id="perfil" class="col-xs-12 col-md-6">
+                <label class="form-label" for="">Tipo de Uso</label><br>
+                <select class="form-control" name="perfil">
+                    <option value="">--------</option>
+                    <option value="1">Dueño Mascota</option>
+                    <option value="2">Centro Veterinario</option>
+                </select>
+                <span class="oculto">Debe seleccionar una Opción</span>
+            </div>
+            <div id="comuna" class="col-xs-12 col-md-6">
+                <label class="form-label" for="">Comuna</label><br>
+                <select class="form-control" name="comuna">
+                    <option value="">----------------</option>
+                    <optgroup label="V Región">
+                        {% for comuna in comunaV %}
+                        <option value="{{comuna.id_comuna}}">{{comuna.nombre_comuna}}</option>
+                        {% endfor %}
+                    </optgroup>
+                    <optgroup label="Metropolitana">
+                        {% for comuna in comunaM %}
+                        <option value="{{comuna.id_comuna}}">{{comuna.nombre_comuna}}</option>
+                        {% endfor %}
+                    </optgroup>
+                </select>
+                <span class="oculto">Debe seleccionar una Opción</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <input type="checkbox" id="cbox" onClick="habilitarBtn()">
+                <label class="form-label" for="cbox">Confirmar Registro</label>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <button id="enviar" type="submit" class="btn btn-success" disabled>Registrarse</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="clear-fix"></div>
+</div>
+
+<script src="{% static 'js/validacion_form.js' %}"></script>
+
+
+{% endblock %}

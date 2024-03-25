@@ -1,0 +1,1508 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Kaushan+Script&family=Poppins:wght@300;400;500;600;700;800&family=Fredoka+One&display=swap');
+
+/* >>>>>>> Benja <<<<<<<<< */
+
+
+/* ############################################### PANEL CLIENTE ##########################################*/
+
+.container-panelcli {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f6f6f9;
+    user-select: none;
+    overflow-x: hidden;
+    appearance: none;
+    box-sizing: border-box;
+    display: grid;
+    width: 96%;
+    height: 80%;
+    margin: 0 auto;
+    margin-top: 200px;
+    margin-bottom: 250px;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto;
+    /* OJO CON ESTE CAMBIO */
+    border-radius: 0 0 40px 40px;
+    padding: 30px;
+}
+
+.zonas {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.formatoZona {
+    display: grid;
+    grid-template-columns: 30rem 20rem auto;
+    height: 40rem;
+    margin-bottom: 20px;
+    align-items: center;
+    padding: 30px;
+}
+
+.zonaAdopcion {
+    background-image: url("../img/adopciones.png");
+    background-size: cover;
+}
+
+.textoAdopcion {
+    background: #22c4b6;
+    border-radius: 50px;
+    padding: 20px;
+    color: white;
+}
+
+.btnAdopciones {
+    background: #22c4b6;
+    cursor: pointer;
+    width: 50%;
+    margin-left: 5rem;
+    border-radius: 50px;
+    color: rgb(238, 238, 238);
+    padding: 10px;
+    box-shadow: 0rem 0rem 4rem 3rem #0000000a;
+}
+
+.zonaMiCuenta {
+    background-image: url("../img/carusel2.png");
+    background-size: cover;
+}
+
+
+/* FIN OJO CAMBIO */
+
+.cont-menuaside {
+    display: none;
+}
+
+.a-sidebar {
+    text-decoration: none;
+    list-style: none;
+    appearance: none;
+    color: #303030;
+}
+
+.img-aside {
+    display: block;
+    width: 100%;
+}
+
+.h1-aside {
+    font-size: 1.8rem;
+}
+
+.h2-aside {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.h3-aside {
+    font-size: 0.87rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.h4-aside {
+    font-size: 0.8rem;
+}
+
+.h5-aside {
+    font-size: 0.77rem;
+}
+
+.small-aside {
+    font-size: 0.75rem;
+}
+
+.imagen-perfil {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.texto-silenciado {
+    color: #7d8da1;
+}
+
+.p-aside {
+    color: #677483;
+}
+
+.b-aside {
+    color: #363949;
+}
+
+.success {
+    color: #09d882;
+}
+
+.icon-mismascotas {
+    color: #ff7782;
+}
+
+.icon-vet {
+    color: #F4D03F;
+}
+
+.icon-yo {
+    color: #4eca63;
+}
+
+.icon-addvet {
+    color: #659bd4;
+}
+
+.icon-misadopciones {
+    color: #7380ec;
+}
+
+.icon-micementerio {
+    color: #659bd4;
+}
+
+.icon-cerrarsesion {
+    color: #e42b3b;
+}
+
+aside {
+    height: 100%;
+    padding-bottom: 60px;
+    background: white;
+    border-radius: 50px;
+}
+
+aside .top {
+    /* contenedor PANEL CLIENTE*/
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+    margin-left: 0.3rem;
+    border-radius: 500px;
+}
+
+.top2-aside {
+    /* CONTENEDOR IN PANEL */
+    display: flex;
+    gap: 0.4rem;
+}
+
+.img-aside {
+    /* LOGO PANEL */
+    object-fit: cover;
+    width: 3.7rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.titulo-panelcliente {
+    /* TITULO "PANEL CLIENTE"*/
+    margin-top: 1.3rem;
+}
+
+aside .close {
+    /* BOTON CERRAR PANEL*/
+    display: none;
+}
+
+.saludo-cliente {
+    font-family: 'Kaushan Script', cursive;
+    font-weight: 600;
+    font-size: 1.3rem;
+    background: white;
+    margin: 0;
+    padding-top: 1rem;
+    padding-bottom: 1.4rem;
+    text-align: center;
+}
+
+
+/* ============== SIDEBAR ============== */
+
+aside .sidebar {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+aside .sidebar a {
+    display: flex;
+    color: #616161;
+    margin: 2rem;
+    gap: 0.8rem;
+    align-items: center;
+    height: 3.7rem;
+    position: relative;
+    transition: all 300ms ease;
+    margin: 0;
+    padding: 2rem auto 2rem auto;
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+    margin-left: 2rem;
+    transition: all 400ms ease;
+}
+
+aside .sidebar a:focus {
+    background: #7fd8a4;
+    color: #ffffff;
+}
+
+aside .sidebar a:focus:before {
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: #38bb64;
+}
+
+aside .sidebar a:hover {
+    color: #09d882;
+}
+
+aside .sidebar a:focus {
+    color: #ffffff;
+}
+
+aside .sidebar a:hover span {
+    margin-left: 3rem;
+    transition: all 600ms ease;
+}
+
+aside .sidebar a:focus span {
+    color: #ffffff;
+    margin-left: 1.84rem;
+    transition: all 0ms ease;
+}
+
+aside .sidebar .a-cerrarsesion:hover {
+    color: #e42b3b;
+}
+
+aside .sidebar .a-cerrarsesion:focus {
+    color: #ffffff;
+    transition: all 150ms ease;
+    background: #e05050;
+}
+
+aside .sidebar .a-cerrarsesion:focus:before {
+    background: #a81313;
+}
+
+
+/* ========================= TABS ===================== */
+
+.texto-info-PC {
+    font-size: 16px;
+    color: #1d1d1d;
+    font-style: normal;
+}
+
+.tabYo {
+    background: white;
+    border-radius: 50px;
+    width: 100%;
+}
+
+.card {
+    height: auto;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 20px;
+    border: 1px solid #00000017;
+    box-shadow: 0rem 0rem 0.45rem 0.1rem #0000000c;
+}
+
+
+/* ======================= TAB YO ================== */
+
+#tabYo {
+    background: white;
+    border-radius: 50px;
+    width: 100%;
+    display: block;
+}
+
+.cardYo {
+    align-items: center;
+    text-align: center;
+}
+
+.cardYo .img-perfil-aside {
+    margin-top: 10px;
+    object-fit: cover;
+    width: 8rem;
+    border-radius: 50%;
+    box-shadow: 0.8rem 0.5rem 2rem 0.7rem #00000015;
+}
+
+.cardYo .btn-modificarImagen {
+    background: #20d0dd;
+    color: white;
+    border-radius: 50px;
+    padding: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    box-shadow: 0.1rem 0.2rem 0.8rem 0.4rem #00000015;
+}
+
+.cardYo .contenido {
+    margin-top: 20px;
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    font-size: 14px;
+    color: #8a8a8a;
+    font-style: italic;
+    background: #f5f5f5;
+    border-radius: 50px;
+    padding: 33px;
+    box-shadow: 0.4rem 0.2rem 2rem 0.7rem #00000015;
+}
+
+.cardYo .btns {
+    margin-top: 30px;
+}
+
+.cardYo .btns .btn-modificar {
+    background: #09d882;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0.1rem 0.2rem 0.8rem 0.4rem #0000001a;
+}
+
+.texto-info-PC {
+    font-size: 16px;
+    color: #1d1d1d;
+    font-style: normal;
+}
+
+
+/* ===== FIN - Tab Yo ===== */
+
+
+/* ================== TAB MIS MASCOTAS ==================== */
+
+#tabMisMascotas {
+    display: none;
+    justify-content: center;
+    transition: opacity .1s;
+    will-change: opacity;
+    top: 6%;
+    left: 14%;
+    right: 14%;
+    padding: 1.2rem;
+    overflow-y: auto;
+    margin: auto 20px;
+    text-align: center;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    z-index: 9999;
+    transition: all 600ms ease;
+    box-shadow: 0.2rem 0.2rem 4rem 1rem #0000001e;
+}
+
+
+/* ======= TAB MIS MASCOTAS ========== */
+
+.tabSection {
+    background: white;
+    border-radius: 50px;
+    width: 100%;
+}
+
+.cardMisMascotas {
+    text-align: center;
+    align-items: center;
+}
+
+.cardMisMascotas .zona-mascotas {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.cardMisMascotas .zona-mascotas .card-mascota {
+    height: auto;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 20px;
+    border: 1px solid #00000017;
+    box-shadow: 0rem 0rem 0.45rem 0.1rem #0000000c;
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.cardMisMascotas .card-mascota img {
+    margin-top: 10px;
+    object-fit: cover;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 20px;
+    box-shadow: 0.8rem 0.5rem 2rem 0.7rem #00000015;
+}
+
+.cardMisMascotas .card-mascota h5 {
+    margin-top: 10px;
+}
+
+.cardMisMascotas .card-mascota p {
+    color: #5a5a5a;
+    font-size: 15px;
+}
+
+.cardMisMascotas .card-mascota .btns {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 4px;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.cardMisMascotas .card-mascota .modificar-mascota-btn {
+    background: #09d882;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.cardMisMascotas .card-mascota .btn-eliminar-mascota {
+    background: #ee4f5d;
+    color: white;
+    padding: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.cardMisMascotas .card-mascota-nueva {
+    height: auto;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 20px;
+    border: 1px solid #00000017;
+    box-shadow: 0rem 0rem 0.45rem 0.1rem #0000000c;
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    text-align: center;
+}
+
+.cardMisMascotas .card-mascota-nueva .imgAddPet {
+    margin-top: 10px;
+    margin-bottom: 12px;
+    object-fit: cover;
+    width: 12rem;
+    height: 16rem;
+    border-radius: 20px;
+}
+
+.cardMisMascotas .card-mascota-nueva .btnAddPet {
+    object-fit: cover;
+    width: 4rem;
+    height: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.cardMisMascotas .zona-mascotas .card-mascota .btns p {
+    cursor: pointer;
+}
+
+.cardMisMascotas .card-mascota .btn-eliminar {
+    background: #ee4f5d;
+    color: white;
+    padding: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+
+/* ======================== MODIFICAR INFO MASCOTA ========================*/
+
+
+/* == CONTENEDOR PRINCIPAL == */
+
+.contenedorModPet {
+    position: absolute;
+    display: none;
+    opacity: 0;
+    justify-content: center;
+    transition: opacity .1s;
+    will-change: opacity;
+    top: 6%;
+    left: 14%;
+    right: 14%;
+    padding: 1.2rem;
+    overflow-y: auto;
+    margin: auto 20px;
+    text-align: center;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    z-index: 9999;
+    transition: all 600ms ease;
+    box-shadow: 0.2rem 0.2rem 4rem 1rem #0000001e;
+}
+
+#btnModificarVet {
+    background: #09d882;
+    color: white;
+    border-radius: 50px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0.1rem 0.2rem 0.8rem 0.4rem #0000001a;
+    border: none;
+}
+
+
+/* .btnModEnviar{
+    border: none;
+    color: white;
+    background: transparent;
+} */
+
+.cardMisMascotas .card-mascota-nueva .btnMas {
+    display: block;
+    margin: 0px auto;
+    background: none;
+    width: 5rem;
+    height: 4rem;
+    border: none;
+    border-radius: 50%;
+}
+
+.contenido-modPet {
+    display: grid;
+    color: #3b3b3b;
+    grid-template-columns: auto 50%;
+    padding: 0;
+    gap: 1rem;
+}
+
+
+/* == CUADRO GRIS 1 == */
+
+.contenido-modPet .part1 {
+    background: #f6f6f9;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+
+/*Fotos "perfil" mascotas*/
+
+.contenido-modPet .part1 .img-pet {
+    background: #ffff;
+    border-radius: 50%;
+}
+
+.img-pet img {
+    height: 90%;
+    width: 50%;
+    border-radius: 10px;
+}
+
+
+/* .contenido-modPet .part1 .img-pet .perfilPetPerro {
+    display: inline;
+    opacity: 1;
+}
+
+.contenido-modPet .part1 .img-pet .perfilPetGato {
+    display: none;
+    opacity: 0;
+}
+
+.contenido-modPet .part1 .img-pet .perfilPetExotico {
+    display: none;
+    opacity: 0;
+}
+
+.contenido-modPet .part1 .tipoPet img {
+    height: 100%;
+} */
+
+.contenido-modPet .part1 .txtInpNombre {
+    margin-top: 1rem;
+}
+
+
+/* == CONTENEDOR BOTONES TIPO DE MASCOTA == */
+
+.contenido-modPet .tipoPet {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.contenido-modPet .part1 .tipoPet img {
+    height: 100%;
+}
+
+
+/*Botones selección tipo de mascota*/
+
+.tipoMascotaBtn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #ff7543;
+    width: 7rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 6px;
+    margin: 16px auto 16px auto;
+    cursor: pointer;
+}
+
+
+/*Animacion de botones*/
+
+.tipoMascotaBtn:hover {
+    background: #ffff;
+    color: #1d1d1d;
+    border: 0.1rem solid #ff7543;
+    transition: all 150ms ease;
+}
+
+
+/* == CUADRO GRIS 2 == */
+
+.contenido-modPet .part2 {
+    background: #f6f6f9;
+    height: 100%;
+    padding: 1rem 4rem 1rem 4rem;
+    border-radius: 20px;
+}
+
+.guardar-modPet-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #09d882;
+    width: 7rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 6px;
+    margin: 16px auto 16px auto;
+    cursor: pointer;
+}
+
+.p-btn {
+    text-align: center;
+    margin: 0;
+    width: auto;
+    border: none;
+    color: white;
+    background: transparent;
+}
+
+.p-btn:hover {
+    color: #09d882;
+}
+
+.btnModCerrar:hover {
+    color: red;
+}
+
+.guardar-modPet-btn:hover {
+    color: #09d882;
+    background: #ffffff;
+    transition: all 150ms ease;
+    border: 0.1rem solid #09d882;
+}
+
+.btnAccionMod .cancelar-modPet-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: red;
+    width: 7rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 6px;
+    margin: 16px auto 16px auto;
+    cursor: pointer;
+}
+
+.cancelar-modPet-btn:hover {
+    color: red;
+    background: #ffffff;
+    transition: all 150ms ease;
+    border: 0.1rem solid red;
+}
+
+.btnAccionMod {
+    display: grid;
+    grid-template-columns: auto auto;
+    background: #f6f6f9;
+    border-radius: 20px;
+}
+
+
+/* FIN MODIFICAR INFO MASCOTA*/
+
+
+/* ===== FIN - Tab Mis Mascotas ===== */
+
+
+/*TAB VETERINARIOS*/
+
+#tabVeterinarios {
+    display: none;
+}
+
+.tabAgregarVet {
+    /* position: absolute; */
+    display: none;
+    /* opacity: 0; */
+    justify-content: center;
+    transition: opacity .1s;
+    will-change: opacity;
+    /* top: 6%;
+    left: 14%;
+    right: 14%; */
+    padding: 1.5rem;
+    width: 80%;
+    overflow-y: auto;
+    margin: auto 10%;
+    margin-top: 5%;
+    text-align: center;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    z-index: 9999;
+    transition: all 600ms ease;
+    box-shadow: 0.2rem 0.2rem 4rem 1rem #0000001e;
+}
+
+.tabAgregarVet label {
+    margin-top: 2%;
+}
+
+.tabAgregarVet input {
+    text-align: center;
+}
+
+
+/* .tabAgregarVet button {
+    margin-top: 2%;
+    color: #ffffff;
+    background: #09d882;
+    transition: all 150ms ease;
+    border: 0.1rem solid #09d882;
+    border-radius: 50px;
+} */
+
+
+/* ================== TAB HISTORIAL CITAS ==================== */
+
+#tabHistorialCitas {
+    display: none;
+}
+
+.cardHistorialCitas {
+    text-align: center;
+}
+
+.cardHistorialCitas .info {
+    text-align: center;
+    padding: 15px 80px 10px 80px;
+    color: #a3a3a3;
+    font-size: 13px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.top-HistorialCitas {
+    display: grid;
+    grid-template-columns: auto 0.13rem auto;
+    text-align: center;
+    align-items: center;
+    height: 8rem;
+    background: #ffffff;
+    gap: 2rem;
+}
+
+.top-HistorialCitas .top-seccion {
+    background: #f8f8f8;
+    border-radius: 20px;
+    padding: 10px 0px;
+    box-shadow: 0.2rem 0.2rem 1rem 0.08rem #0000001a;
+}
+
+.top-HistorialCitas .titulo-cant {
+    font-size: 16px;
+    font-weight: 450;
+    color: #747474;
+    margin: 0;
+    padding: 0;
+}
+
+.top-HistorialCitas .cant-citas {
+    margin: -5px;
+    padding: 0;
+    font-size: 50px;
+    font-family: 'Fredoka One', cursive;
+}
+
+.top-HistorialCitas .enEspera {
+    color: #ff925f;
+}
+
+.top-HistorialCitas .concluidas {
+    color: #27e065;
+}
+
+.top-HistorialCitas .separador-top {
+    background: #b9b9b9;
+    color: #ca000000;
+    height: 4rem;
+    width: 0.13rem;
+}
+
+.separador-historial {
+    width: auto;
+    color: #00000000;
+    border-top: 0.125rem solid #dadada96;
+    margin: 0 100px;
+    margin-top: 15px;
+}
+
+.separador-historial p {
+    margin: 0;
+}
+
+.lista-historial {
+    background: #ebebeb;
+    display: grid;
+    grid-template-columns: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.lista-historial .historial {
+    display: grid;
+    grid-template-columns: 2rem 12rem 20rem auto 3.3rem;
+}
+
+.lista-historial .formato {
+    align-items: center;
+    margin: 0.2rem 0.1rem;
+    padding: 0.5rem;
+    background: #f7f7f7;
+    font-size: 14px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.lista-historial .historial .id {
+    color: #e7e7e7;
+    background: #ebebeb;
+    font-size: 16px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.lista-historial p {
+    margin: 5px 0 0 0;
+    color: #727272;
+}
+
+.lista-historial .historial .p-id {
+    margin: 0;
+    color: #6e6e6e;
+    font-size: 20px;
+    font-family: 'Poppins', cursive;
+    font-weight: 400;
+}
+
+.lista-historial .formato span {
+    margin-right: 6px;
+}
+
+.lista-historial .formato .date {
+    color: #5f5f5f;
+}
+
+.lista-historial .formato .doctor {
+    color: #3198ec;
+}
+
+.lista-historial .historial .cuadro-ver {
+    padding: 0.5rem 0.25rem;
+    cursor: pointer;
+}
+
+.lista-historial .formato .ver {
+    color: #ffffff;
+    font-size: 2.3rem;
+    background: #3acf85;
+    border-radius: 10px;
+    padding: 2.5px;
+    margin: 0;
+}
+
+.lista-historial .formato .ver:hover {
+    color: #09d882;
+    background: #ffffff;
+    transition: all 150ms ease;
+}
+
+
+.lista-historial .formato .eliminarBtn {
+    color: #ffffff;
+    font-size: 2.3rem;
+    background: #3acf85;
+    border-radius: 10px;
+    padding: 2.5px;
+    margin: 0;
+}
+
+
+
+#fondoNegroBlur {
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    width: 100%;
+    opacity: 0;
+    transition: opacity .1s;
+    will-change: opacity;
+    padding-bottom: 7vh;
+    padding-left: 2vw;
+    overflow-y: auto;
+    background: #0000005d;
+}
+
+.contenedorDetalle {
+    position: fixed;
+    display: none;
+    opacity: 0;
+    justify-content: center;
+    transition: opacity .1s;
+    will-change: opacity;
+    top: 6%;
+    left: 24%;
+    right: 24%;
+    padding: 1.2rem;
+    min-height: 40rem;
+    margin: auto 20px;
+    text-align: center;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    z-index: 9999;
+    transition: all 600ms ease;
+    box-shadow: 0.2rem 0.2rem 4rem 1rem #0000001e;
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 90%;
+}
+
+.cerrar-detalle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #09d882;
+    width: 7rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 6px;
+    margin: 16px auto auto auto;
+    cursor: pointer;
+}
+
+.cerrar-detalle:hover {
+    color: #09d882;
+    background: #ffffff;
+    transition: all 150ms ease;
+    border: 0.1rem solid #09d882;
+}
+
+.cerrar-detalle p {
+    text-align: center;
+    margin: 0;
+    width: auto;
+}
+
+.detalle-contenido {
+    display: grid;
+    grid-template-columns: 13rem auto;
+    gap: 1rem;
+    color: #3b3b3b;
+}
+
+.part1-detalle {
+    background: #f6f6f9;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.part1-detalle h5 {
+    font-size: 17px;
+    font-weight: 800;
+    margin: 25px 0 0 0;
+}
+
+.part1-detalle img {
+    width: 100%;
+    padding: 0.7rem 4rem;
+    vertical-align: middle;
+    object-fit: cover;
+    border-radius: 40px;
+}
+
+.detalle-contenido .contenedor-info {
+    margin: 30px 0;
+}
+
+.detalle-contenido .p-subtitulos {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.detalle-contenido p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.part2-detalle {
+    background: #f6f6f9;
+    border-radius: 20px;
+}
+
+.part2-detalle .sec1-detalle {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.part2-detalle .cont-sec2 {
+    background: #ffffff;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.2rem #00000017;
+    min-height: 8rem;
+}
+
+.part2-detalle .cont-sec2 .p-comentarios {
+    display: grid;
+    min-height: 3rem;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.detalle-valoracion {
+    margin-top: 15px;
+    border-radius: 10px;
+    width: auto;
+    min-height: 6rem;
+    background: #f6f6f9;
+}
+
+.detalle-valoracion h6 {
+    padding: 5px 0 0 0;
+    margin: 0;
+}
+
+.detalle-valoracion p {
+    font-size: 13px;
+    margin: 0;
+    color: #a1a1a1;
+    font-style: italic;
+}
+
+.patitas-valoracion {
+    display: flex;
+    justify-content: center;
+}
+
+.patitas-valoracion span {
+    color: #ff8a75;
+    background: #ffffff;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 3rem;
+    margin: 0.5rem 1rem;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.2rem #00000017;
+    cursor: pointer;
+}
+
+.patitas-valoracion span:hover {
+    color: #ffffff;
+    background: #ff8a75;
+    box-shadow: 0rem 0rem 0.7rem 0.2rem #fd887377;
+    transition: all 300ms ease;
+}
+
+.patitas-valoracion p {
+    margin-bottom: 7px;
+}
+
+.detalle-valoracion .noValorado {
+    display: block;
+}
+
+.detalle-valoracion .valorado {
+    display: none;
+}
+
+.detalle-valoracion .valorado h6 {
+    padding: 10px 0;
+}
+
+.detalle-valoracion .valorado img {
+    width: 3.5rem;
+}
+
+.detalle-valoracion .valorado p {
+    padding: 10px 0 10px 0;
+}
+
+
+/* ===== FIN - Tab Historial Citas ===== */
+
+.tabMisAdopciones {
+    display: none;
+}
+
+.tabMiCementerio {
+    display: none;
+}
+
+.tabAyuda {
+    display: none;
+}
+
+@media screen and (max-width: 1200px) {
+    .card {
+        margin: 0;
+    }
+    .cardMisMascotas .zona-mascotas {
+        grid-template-columns: auto;
+    }
+    .contenido-modPet .tipoPet {
+        grid-template-columns: auto auto;
+    }
+    .contenido-modPet .part2 {
+        padding: 1rem;
+    }
+    .lista-historial .historial {
+        display: grid;
+        grid-template-columns: 1.3rem auto auto auto 3.3rem;
+    }
+    .lista-historial .historial .formato {
+        display: grid;
+        grid-template-columns: auto;
+        padding: 0 0.5rem;
+    }
+    .lista-historial .historial .p-id {
+        font-size: 17px;
+        font-weight: 300;
+        padding: 0;
+        margin: 0;
+    }
+    .lista-historial .formato span {
+        font-size: 16px;
+    }
+    .lista-historial p {
+        margin: 0;
+        font-size: 11px;
+    }
+    .lista-historial .formato .ver {
+        font-size: 1.8rem;
+        border-radius: 10px;
+        padding: 2.5px;
+        margin: 0;
+    }
+    .contenedorDetalle {
+        top: 6%;
+        left: 14%;
+        right: 14%;
+        transition: all 400ms ease;
+    }
+}
+
+
+/* ================================== MEDIA QUERYS CELULAR =================================*/
+
+@media screen and (max-width: 992px) {
+    .tabYo .card {
+        margin: 15px;
+        box-shadow: none;
+        border-width: 0;
+    }
+    .cardYo .contenido {
+        grid-template-columns: auto;
+        padding: 10px;
+    }
+    .tipoMascotaBtn {
+        width: 6rem;
+        margin: 10px auto 10px auto;
+    }
+    .tipoMascotaBtn p {
+        font-size: 13.4px;
+    }
+    .tipoMascotaBtn img {
+        font-size: 13.4px;
+    }
+    .contenido-modPet .part1 .tipoPet img {
+        height: 80%;
+    }
+    .cardHistorialCitas .info {
+        padding: 10px;
+    }
+    .top-HistorialCitas .top-seccion h6 {
+        font-size: 12px;
+    }
+    .top-HistorialCitas .top-seccion p {
+        font-size: 2rem;
+    }
+    .contenedorDetalle {
+        top: 6%;
+        left: 5%;
+        right: 5%;
+        padding: 1.2rem;
+        margin: auto 20px;
+        transition: all 400ms ease;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container-panelcli {
+        grid-template-columns: auto;
+        display: flex;
+        width: 100%;
+        padding: 15px;
+        height: 100%
+    }
+    .top2-aside h2 {
+        display: inline;
+        position: relative;
+    }
+    aside .sidebar h3 {
+        display: inline;
+    }
+    aside .sidebar a {
+        width: 5.6rem;
+    }
+    .img-aside {
+        margin-left: 0.4rem;
+    }
+    aside {
+        position: fixed;
+        left: -100%;
+        background-color: #ffffff;
+        width: 18rem;
+        z-index: 3;
+        box-shadow: 0.5rem 1rem 4rem 1rem #00000018;
+        height: 70vh;
+        padding-right: 1.8rem;
+        border-radius: 20px;
+        height: auto;
+        display: none;
+        animation: showMenu 400ms ease forwards;
+    }
+    @keyframes showMenu {
+        to {
+            left: 0;
+        }
+    }
+    aside .sidebar a {
+        width: 100%;
+        height: 2.6rem;
+    }
+    aside .close {
+        display: inline-block;
+        cursor: pointer;
+    }
+    .cont-menuaside {
+        margin: 10px;
+        position: fixed;
+        cursor: pointer;
+        background: #09d882;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        border-radius: 50px;
+        color: #ffffff;
+        display: block;
+        z-index: 2;
+    }
+    .menuaside {
+        margin-top: 18px;
+    }
+    .contenedorModPet {
+        left: 6%;
+        right: 6%;
+    }
+    .contenido-modPet {
+        grid-template-columns: auto;
+    }
+    .contenido-modPet .tipoPet {
+        grid-template-columns: auto auto auto;
+    }
+    .contenido-modPet .part2 {
+        padding: 0.2rem;
+    }
+    .detalle-contenido {
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .part1-detalle {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+    .part1-detalle .contenedor-info-top img {
+        margin-top: 10px;
+        min-width: 30%;
+        max-width: 50%;
+        padding: 0;
+        border-radius: 10px;
+    }
+    .part1-detalle .contenedor-info-top h5 {
+        font-size: 17px;
+    }
+    .detalle-contenido p {
+        font-size: 15px;
+    }
+    .contenedorDetalle {
+        top: 6%;
+        left: 0;
+        right: 0;
+        transition: all 400ms ease;
+        padding: 10px;
+        border-radius: 15px;
+    }
+    .patitas-valoracion span {
+        font-size: 30px;
+        margin: 0.5rem 0.4rem;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .contenedorModPet {
+        left: 0;
+        right: 0;
+    }
+    .contenido-modPet .tipoPet {
+        grid-template-columns: auto;
+    }
+    .tipoMascotaBtn {
+        width: 8rem;
+    }
+    .tipoMascotaBtn p {
+        font-size: 20px;
+    }
+    .btnAccionMod .modbtn {
+        width: 6rem;
+        font-size: 13px;
+    }
+    .detalle-contenido {
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .part1-detalle {
+        display: grid;
+        grid-template-columns: 6rem auto auto;
+    }
+    .part1-detalle .contenedor-info-top img {
+        margin-top: 10px;
+        min-width: 30%;
+        max-width: 50%;
+        padding: 0;
+        border-radius: 10px;
+    }
+    .part1-detalle .contenedor-info-top h5 {
+        font-size: 13px;
+    }
+    .detalle-contenido p {
+        font-size: 12px;
+    }
+    .contenedorDetalle {
+        top: 6%;
+        left: 0;
+        right: 0;
+        transition: all 400ms ease;
+        padding: 10px;
+        border-radius: 15px;
+    }
+}
+
+
+/* Responsividad para el GalaxyFold */
+
+@media screen and (max-width: 360px) {
+    .lista-historial {
+        margin: auto -10px;
+    }
+    .lista-historial .historial {
+        grid-template-columns: 1.3rem auto auto auto 1.3rem;
+    }
+    .lista-historial p {
+        margin: 0;
+        padding: 0;
+        font-size: 10px;
+    }
+    .lista-historial .historial .cuadro-ver {
+        font-size: 1.3rem;
+        padding: 0 0;
+        margin: 0;
+    }
+    .lista-historial .formato {
+        padding: 1.5px 0;
+        margin: 0;
+    }
+    .lista-historial .formato .ver {
+        font-size: 1.3rem;
+        border-radius: 10px;
+        padding: 4.5px 0;
+        margin: 0;
+    }
+    .lista-historial .historial .p-id {
+        font-size: 13px;
+        font-weight: 200;
+    }
+    .patitas-valoracion span {
+        font-size: 30px;
+        margin: 0.5rem 0.15rem;
+    }
+}

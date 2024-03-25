@@ -1,0 +1,203 @@
+{% extends 'planilla.html' %} {% load static %} {% block content %}
+<div class="container-panelcli container">
+
+    <aside>
+        <div class="top">
+            <div class="top2-aside">
+                <img class="img-aside" src='{% static "img/logo-panelcliente.png" %}' alt="">
+                <h2 class="h2-aside titulo-panelcliente">PANEL<span class="success">CENTRO-VETERINARIO</h2>
+            </div>
+            <div class="close" id="close-btncli">
+                <span class="material-symbols-outlined">close</span>
+            </div>
+        </div>
+
+        <div>
+            <h5 class="saludo-cliente"><span class="success">¡Hola </span>{{user.nombres}}!</h2>
+        </div>
+
+        <div class="sidebar">
+            <a id="yoCen-btn" class="a-sidebar" href="#">
+                <span class="material-symbols-outlined icon-yo">person</span>
+                <h3 class="h3-aside">Yo</h3>
+            </a>
+        </div>
+
+        <div class="sidebar">
+            <a id="addVet" class="a-sidebar" href="#">
+                <span class="material-symbols-outlined icon-addvet">add_circle</span>
+                <h3 class="h3-aside">Agregar Veterinario</h3>
+            </a>
+        </div>
+
+        <div class="sidebar">
+            <a id="misVeterinarios-btn" class="a-sidebar" href="#">
+                <span class="material-symbols-outlined icon-vet">
+                    medication_liquid
+                    </span>
+                <h3 class="h3-aside">Mis Veterinarios</h3>
+            </a>
+        </div>
+
+        <!-- 
+        <div class="sidebar">
+            <a class="a-sidebar" href="#">
+                <span class="material-symbols-outlined icon-misadopciones">volunteer_activism</span>
+                <h3 class="h3-aside">Mis Adopciones</h3>
+            </a>
+        </div>
+
+        <div class="sidebar">
+            <a class="a-sidebar" href="#">
+                <span class="material-symbols-outlined icon-micementerio">
+                    filter_drama
+                    </span>
+                <h3 class="h3-aside">Mi Cementerio</h3>
+            </a>
+        </div> -->
+
+        <div class="sidebar">
+            <a class="a-sidebar" href="#">
+                <span class="material-symbols-outlined icon-ayuda">contact_support</span>
+                <h3 class="h3-aside">Ayuda</h3>
+            </a>
+        </div>
+
+        <div class="sidebar">
+            <a class="a-sidebar a-cerrarsesion" href="{% url 'logout' %}">
+                <span class="material-symbols-outlined icon-cerrarsesion">logout</span>
+                <h3 class="h3-aside">Cerrar Sesión</h3>
+            </a>
+        </div>
+    </aside>
+
+
+    <div class="tabSection">
+        <div id="menu-btncli" class="cont-menuaside">
+            <span class="material-symbols-outlined menuaside">menu</span>
+        </div>
+        <div id="tabYoCen">
+            <div class="cardYo card">
+                <h4>Tu Información</h4>
+                <img class="img-perfil-aside" src='{% static "img/usuario2.png" %}' alt="">
+
+                <div class="contenido">
+                    <p>Nombre: <br><span class="texto-info-PC">{{user.nombres}} {{user.apellidos}}</span></p>
+                    <p>Correo: <br><span class="texto-info-PC">{{user.email}}</span></p>
+                    <p>Edad: <br><span class="texto-info-PC">{{user.edad}}</span></p>
+                    <p>Celular: <br><span class="texto-info-PC" style="color: rgb(26, 146, 201); font-style: italic;">+569 </span><span class="texto-info-PC">{{user.celular}}</span></p>
+
+                </div>
+
+                <div class="btns">
+                    <button class="btn-modificar"><a style="text-decoration: none;color:white; display: block;" href="{% url 'editar-usuario' user.id_usuario %}">Modificar Datos</a></button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="tabVeterinarios">
+            <div class="cardMisMascotas card">
+                <h3 style="text-align: center;">Mis Veterinarios</h3>
+                <!-- <p style="color: rgb(112, 112, 112); font-size: 15px;">Para poder realizar una consulta veterinaria es necesario que agregues a una mascota con la mayor cantidad de información posible.</p> -->
+                <div class="zona-mascotas">
+                    {% if veterinarios %} {% for vet in veterinarios %}
+                    <div class="card-mascota">
+                        <img class="img-perfil-aside" src='{% static "img/vet.png" %}' alt="">
+                        <h5>{{vet.nombre_completo}}</h5>
+                        <p>{{vet.correo}}</p>
+                        <div class="btns">
+                            <button id="btnModificarVet" class="btn-modificarVet" onclick="obtenerVet('{{vet.id_veterinario}}')" data-bs-toggle="modal" data-bs-target="#modVetModal">Modificar</button>
+                            <button class="btn-eliminar" onclick="eliminarVet('{{vet.id_veterinario}}', '{{vet.nombre_completo}}')"><span class="material-symbols-outlined" style="vertical-align: middle; margin-top: 2px;">close</span></button>
+                        </div>
+                    </div>
+
+
+                    {% endfor %} {% else %}
+                    <p>No tiene veterinarios registrados, favor agregar</p>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+        <div class="modal fade" id="modVetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modificar Veterinario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="part2">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control txtNombre inputVM" id="floatingInput" name="nombreM">
+                                <label for="floatingInput" style="color: #04bc70;">Nombre</label>
+                                <span id="errorNMV" style="display: none;">Nombre inválido. Debe ingresar nombre y apellido</span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control txtCorreo inputVM" id="floatingInput" name="correoM">
+                                <label for="floatingInput" style="color: #04bc70;">Correo</label>
+                                <span id="errorCoMV" style="display: none;">Correo inválido. Debe ingresar un formato de correo valido</span>
+
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control txtCelular inputVM" id="floatingInput" name="celularM">
+                                <label for="floatingInput" style="color: #04bc70;">Celular</label>
+                                <span id="errorCeMV" style="display: none;">Celular inválido. Debe ingresar 9 dígitos</span>
+
+                            </div>
+                            <input type="text" name=" " class="txtIdCli " style="display: none;">
+                            <input type="text" name=" " class="txtIdV " style="display: none;">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button id="btnActVet" class="btn btn-success " onclick="actualizarVet() ">Modificar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabAgregarVet">
+            <h3 style="text-align: center;">Agregar Veterinarios</h3>
+            <hr>
+            <p>Para agregar un veterinario debe completos todos lo campos.</p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <label for="nombres" class="form-label" style="color: #04bc70;">Nombre Completo</label>
+                    <input type="text" class="form-control inputAV" name="nombre" id="nombre">
+                    <span id="errorNV" style="display: none;">Nombre inválido. Debe ingresar nombre y apellido</span>
+                </div>
+                <div class="row">
+                    <label for="email" class="form-label" style="color: #04bc70;">Clave</label>
+                    <input type="password" class="form-control inputAV" name="clave" id="clave">
+                    <span id="errorCV" style="display: none;">Clave inválido. Debe ingresar mínimo 5 caracteres</span>
+                </div>
+                <div class="row">
+                    <label for="email" class="form-label" style="color: #04bc70;">Correo</label>
+                    <input type="email" class="form-control inputAV" name="email" id="email">
+                    <span id="errorCoV" style="display: none;">Correo inválido. Debe ingresar un formato de correo valido</span>
+                </div>
+                <div class="row">
+                    <label for="email" class="form-label" style="color: #04bc70;">Celular</label>
+                    <input type="number" class="form-control inputAV" name="celular" id="celular">
+                    <span id="errorCeV" style="display: none;">Celular inválido. Debe ingresar 9 dígitos</span>
+                </div>
+
+                <input type="text" value="{{user.id_usuario}}" id="id_cli" style="display: none;">
+                <input type="text" value="4" name="perfil" id="perfil" style="display: none;">
+                <button id="btnAV" type="button" class="btn btn-success mt-3" onclick="agregarVeterinario()" disabled>Agregar</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script src="{% static 'js/menuCentro.js' %}"></script>
+<script src="{% static 'js/veterinario.js' %}"></script>
+
+{% endblock %}

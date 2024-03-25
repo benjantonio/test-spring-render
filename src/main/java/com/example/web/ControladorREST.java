@@ -48,9 +48,11 @@ public class ControladorREST {
         ArrayList<logDto> logs = logDao.Listar_Logs();
         Collections.reverse(logs);
         
+        //logDao.Borrar_Log();
+        
         model.addAttribute("logs", logs);
         
-        return "indice";
+        return "planilla";
     }
     
 }

@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Patitas</title>
+
+    <!-- API de google que brinda ICONOS de Material -->
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- se ocupe en panelcli.html-->
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+    <link th:href="@{/css/style.css/}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link th:href="@{/css/stylePanel.css/}" rel="stylesheet" />
+</head>
+
+<body>
+    <!--Estos 2 metodos envian el ancho del html a un javascript, con el cual se necesita leer en el panel cliente (para una aniamción)-->
+    <!--INICIO HEADER-->
+    <header>
+        <!-- BANNER -->
+        <div class="bannerTop">
+            <p class="pnormal">¿Tienes un centro médico?: ¡Trabaja con <span class="mundopatitas">Mundo Patitas</span>!</p>
+            <p class="presponsivo">¡Tu Centro Médico en <span class="mundopatitas">Mundo Patitas!</p>
+      <div class="contacto">
+        <span class="iconContacto material-symbols-outlined">
+          contact_support
+        </span>
+                <p class="contactonormal">(+569 82047779 | mundopatitas@gmail.com)</p>
+                <p class="contactoresponsivo">(mundopatitas@gmail.com)</p>
+        </div>
+        </div>
+        <!-- FIN BANNER -->
+        
+        <!-- MENU -->
+        <div class="menuContent">
+            <a href="#" class="brand">
+                <div class="logo">
+                    
+                    <img th:src="@{/images/logonew.png/}" type="image/png">
+                    <p class="description">Por la felicidad de tu mascota <span class="icon material-symbols-outlined">
+              favorite
+            </span> </p>
+                </div>
+            </a>
+
+            <nav class="menu">
+
+                <ul class="ulBotones">
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+
+                    <li><a href="{% url 'adopciones' %}">Adoptar</a></li>
+                   
+                    <li><a href="{% url 'foro' %}">Foro</a></li>
+                    <!-- {% if request.user.perfil_id == 1 %} --> 
+                    <li><a href="{% url 'agendarHora' %}">Agendar Hora</a></li>
+                    <li><a href="{% url 'panelcli' %}">Mi Panel</a></li>
+                    <!-- {% elif request.user.perfil_id == 2 %} -->
+                    <li><a href="{% url 'veterinarios' %}">Veterinarios</a></li>
+                    <li><a href="{% url 'panelcentro' %}">Mi Panel</a></li>
+                    <!-- {% endif %} -->
+                </ul>
+
+                <ul class="ulLogin">
+
+                    <!-- {% if user.is_authenticated %} -->
+                    <!--<p class="username">{{user.username}}</p> -->
+                    <!-- {% else %} -->
+                    <p>¿Tienes una cuenta?</p>
+                    <div class="contenedorLiLogin">
+                        <li><a href="{% url 'login'%}">Iniciar Sesion</a></li>
+                        <p>o</p>
+                        <li><a href="{% url 'registro'%}">Registrarse</a></li>
+
+                    </div>
+                    <!-- {% endif %} -->
+                </ul>
+
+                <div class="btn ">
+                    <i class="fas fa-times close-btn"></i>
+                </div>
+
+
+            </nav>
+
+
+            <div class="btn btn-abrir-menu">
+                <i class="fas fa-bars menu-btn"></i>
+            </div>
+        </div>
+
+
+    </header>
+    <!--FIN HEADER-->
+
+
+    <div class="contenedor">
+        <!--{% block content %} {% endblock %}-->
+        <div th:include="home :: home"></div>
+    </div>
+
+
+    <!--INICIO FOOTER-->
+    <footer>
+
+        <!--█████ FOOTER INFERIOR █████-->
+
+        <div class="main-content">
+            <div class="left box">
+                <!--NOSOTROS-->
+                <h2 class="titulofooter">Nosotros</h2>
+                <div class="content">
+                    <p class="textofooter">
+                        <strong>Mundo Patitas</strong> nace por estudiantes de Duoc UC, quienes buscan brindar seguridad a dueños de mascotas.
+                        <br> <br> Nuestro OBJETIVO está enfocado en que las personas puedan solicitar consultas veterinarias, conociendo antes la reputación del Médico.
+                    </p>
+                    <div class="social">
+                        <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f"></span></a>
+                        <a href="#"><span class="fab fa-twitter"></span></a>
+                        <a href="https://instagram.com/coding.np"><span class="fab fa-instagram"></span></a>
+                        <a href="https://youtube.com/c/codingnepal"><span class="fab fa-youtube"></span></a>
+                    </div>
+                </div>
+            </div>
+            <!--UBICACIÓN-->
+            <div class="right box">
+                <h2 class="titulofooter"></h2>
+                <div class="content">
+                    <p><span><strong></strong> </p>
+        </div>
+
+      </div>
+      <!--VALOR MONEDA-->
+      <div class="center box">
+        <h2 class="titulofooter">Ubicación</h2>
+        <div class="content">
+          <div class="place">
+            <span class="fas fa-map-marker-alt"></span>
+                        <span class="text">Valparaíso, Chile.</span>
+                </div>
+                <div class="phone">
+                    <span class="fas fa-phone-alt"></span>
+                    <span class="text">+569 82047779</span>
+                </div>
+                <div class="email">
+                    <span class="fas fa-envelope"></span>
+                    <span class="text">mundopatitas@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="bottom">
+            <div class="bottoncenter">
+                <span class="credit">Creado por <a class="losfrozenteam"
+            href="https://www.concierto.cl/wp-content/uploads/2020/10/174a3f4fa44c7bb22b3b6429cb4ea44c-768x432.png">????</a>
+          | </span>
+                <span class="far fa-copyright"></span><span> 2022 Todos los derechos reservados.</span>
+            </div>
+        </div>
+        <!-----FIN---->
+
+    </footer>
+    <!--FIN FOOTER-->
+
+    <script type="text/javascript">
+        //javascript for navigation bar effect on scroll
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous" type="text/javascript"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css"> -->
+
+
+        <script type="text/javascript" th:src="@{/js/validacion_form.js}"></script>
+        <script type="text/javascript" th:src="@{/js/datatable.js}"></script>
+        <script type="text/javascript" th:src="@{/js/planilla.js}"></script>
+
+
+</body>
+
+</html>

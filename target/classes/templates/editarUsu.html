@@ -1,0 +1,36 @@
+{% extends 'planilla.html' %} {% load static %}{% block content %} {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: red;text-transform:uppercase;list-style:none ;">{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
+<div id="formEditUsu">
+    <h2 style="width: 100%;text-align:center;font-family: 'Yanone Kaffeesatz', sans-serif;" class="mb-3">Actualizar Datos de {{user.nombres}} {{user.apellidos}}</h2>
+    <form id="form" method="POST">
+        {% csrf_token %} {{form.as_p}}
+        <button id="enviar" type="submit" class="btn btn-success">Actualizar Usario</button>
+    </form>
+</div>
+
+<!-- <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Actualizar Datos</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="form" method="POST">
+                {% csrf_token %} {{form.as_p}}
+                <button id="enviar" type="submit" class="btn btn-success">Actualizar Usario</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+</div> -->
+
+
+{% endblock %}

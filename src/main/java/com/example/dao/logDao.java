@@ -34,6 +34,12 @@ public interface logDao extends CrudRepository<logDto, Long> {
         return Escalar("call SP_Guardar_Log(?,?,?)", parametros);
     }     
     
+    public static int Borrar_Log()
+    {
+        ArrayList parametros = new ArrayList();
+        return Escalar("call SP_Borrar_Log()", parametros);
+    }  
+    
     public static ArrayList Listar_Logs()
     {
         ArrayList parametros = new ArrayList();

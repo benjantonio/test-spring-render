@@ -1,0 +1,4 @@
+{% extends 'planilla.html' %} {% load static %} {% block content %} {% for vet in vet %}
+
+<h1>{{vet.id_veterinario}} {{vet.nombre_completo}}</h1>
+{% endfor %} {% endblock %}

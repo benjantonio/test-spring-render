@@ -1,0 +1,224 @@
+{% extends 'panelVeterinario/plantillaPanelVet.html' %} {% load static %} {% block content %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+<script type="text/JavaScript" src="https://MomentJS.com/downloads/moment-with-locales.js"></script>
+
+
+
+<body class="bodyPendientes">
+
+    {% if veterinario %} {% for vet in veterinario %}
+        <p class="idVetLogeado" style="display: none;">{{vet.id_veterinario}}</p>
+        {% endfor %}{% endif %}
+<div class="contenedor-header-pags">
+    <h4>
+        PENDIENTES
+    </h4>
+    <p>Cuando el cliente llegue a la Cita, presiona el botón <button
+            style="cursor: default; padding: 3px 10px; border: 0px; border-radius: 5px; margin-right: 3px; background: #09d882; color: white;">Ver</button>
+        para obtener más detalles. <br> Luego, Inicia tu Cita para dejar un registro de la consulta en tu Panel y en el Panel
+        del Cliente.</p>
+
+</div>
+
+<!--Contenedor Citas Pendientes-->
+<div class="card mb-4 contenedor-datetable-disp">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Citas Pendientes
+    </div>
+    <div class="card-body">
+
+        <table id="example" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
+            <thead>
+                <tr style="text-align: center;">
+                    <th>Hora</th>
+                    <th>Fecha</th>
+                    <th>Motivo Consulta</th>
+                    <th>Mascota</th>
+                    <th>Dueño</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            {% if citasPendientes %}
+            <tbody>
+                {% for citaPendiente in citasPendientes %}
+                <tr style="text-align: center;">
+                    <td>{{citaPendiente.hora}}</td>
+                    <td>{{citaPendiente.fecha}}</td>
+                    <td>{{citaPendiente.motivo_consulta}}</td>
+                    <td>{{citaPendiente.id_mascota.nombre}}</td>
+                    <td>{{citaPendiente.id_mascota.id_cliente.nombres}}
+                        {{citaPendiente.id_mascota.id_cliente.apellidos}}</td>
+                    {% if citaPendiente.estado == 'Atrasada' %}<td style="color: #ff8827; background: #ffa1273b;">
+                        {{citaPendiente.estado}}</td>
+                    {% else %}<td style="color: #0ac175; background: #09d88218;">{{citaPendiente.estado}}</td>
+                    {% endif %}
+
+                    <td style="text-align: center;">
+                        <button
+                            onclick="verCita('{{citaPendiente.id_mascota.id_cliente_id}}','{{citaPendiente.id_veterinario_id}}','{{citaPendiente.fecha}}','{{citaPendiente.hora}}','{{citaPendiente.motivo_consulta}}','{{citaPendiente.id_mascota.id_cliente.nombres}}','{{citaPendiente.id_mascota.id_cliente.apellidos}}','{{citaPendiente.id_mascota.id_cliente.celular}}','{{citaPendiente.id_mascota.nombre}}','{{citaPendiente.id_mascota.edad}}','{{citaPendiente.id_mascota.tipo}}','{{citaPendiente.id_mascota.raza}}','{{citaPendiente.id_mascota.id_cliente.email}}','{{citaPendiente.id_veterinario.nombre_completo}}','{{citaPendiente.id_veterinario.correo}}'), rescatarIds('{{citaPendiente.id_cita}}','{{citaPendiente.id_mascota.id_cliente_id}}','{{citaPendiente.id_mascota_id}}','{{citaPendiente.id_veterinario_id}}','{{citaPendiente.fecha}}','{{citaPendiente.hora}}','{{citaPendiente.motivo_consulta}}')"
+                            style="box-shadow: 0.6px 1px 4px 0.6px #0000002f; padding: 3px 10px; border: 0px; border-radius: 5px; margin-right: 3px; background: #09d882; color: white;">Ver</button>
+                        <button
+                            onclick="eliminarCita('{{citaPendiente.id_cita}}','{{citaPendiente.fecha}}','{{citaPendiente.hora}}')"
+                            style="box-shadow: 0.6px 1px 4px 0.6px #0000002f; padding: 3px 10px; border: 0px; border-radius: 5px; background: #FF3333; color: white;">Eliminar</button>
+                    </td>
+                </tr>{% endfor %}
+            </tbody>
+
+            {% else %}
+            {% endif %}
+        </table>
+    </div>
+
+
+
+
+    <div id="contenedorDetalle" class="contenedorDetalle">
+        <div class="detalle-contenido">
+            <div class="part1-detalle">
+                <div class="contenedor-info-top">
+                    <h5>Información</h5>
+                    <img src='{% static "img/informe-veterinario.png" %}' alt="">
+                </div>
+                <div class="contenedor-info primer-contenedor-info">
+                    <p class="p-subtitulos">Fecha Cita:</p>
+                    <p class="fechaCitaPendiente"></p>
+                </div>
+                <div class="contenedor-info">
+                    <p class="p-subtitulos">Motivo Consulta:</p>
+                    <p class="motivoConsultaPendiente"></p>
+                </div>
+                <div class="contenedor-info">
+                    <p class="p-subtitulos">Nombre Dueño:</p>
+                    <p class="nombreDuenoPendiente"></p>
+                </div>
+                <div class="contenedor-info">
+                    <p class="p-subtitulos">Contacto:</p>
+                    <p class="contactoDueñoPendiente"></p>
+                </div>
+                <div class="contenedor-info ultimo-contenedor-info">
+                    <p class="p-subtitulos">Última Cita:</p>
+                    <p class="ultimaCitaConcluida">Primera vez que viene</p>
+                </div>
+            </div>
+
+            <div class="part2-detalle">
+                <div class="sec1-detalle">
+                    <div class="contenedor-info">
+                        <p class="p-subtitulos">Nombre Mascota:</p>
+                        <p class="nombreMascotaPendiente"></p>
+                    </div>
+                    <div class="contenedor-info">
+                        <p class="p-subtitulos">Edad:</p>
+                        <p class="edadMascotaPendiente"></p>
+                    </div>
+                    <div class="contenedor-info">
+                        <p class="p-subtitulos">Tipo:</p>
+                        <p class="tipoMascotaPendiente"></p>
+                    </div>
+                    <div class="contenedor-info">
+                        <p class="p-subtitulos">Raza:</p>
+                        <p class="razaMascotaPendiente"></p>
+                    </div>
+                </div>
+                <div class="sec2-detalle">
+                    <div class="contenedor-info cont-sec2">
+                        <div id="zona-block-textarea" class="zona-block-textarea">
+                            <span id="candado1" class="material-symbols-outlined">lock</span>
+                            <p id="textoBloqueado" class="textoBloqueado">Bloqueado</p>
+                        </div>
+                        <div class="wrapper">
+                            <h2 id="titulo-wrapper" class="titulo-wrapper">Tratamiento / Dosis</h2>
+                            <textarea disabled class="tratamientoVeterinario" maxlength="500" spellcheck="false"
+                                placeholder="Inicia para desbloquear." required></textarea>
+                        </div>
+                    </div>
+                    <div class="contenedor-info cont-sec2">
+                        <div id="zona-block-textarea2" class="zona-block-textarea">
+                            <span id="candado2" class="material-symbols-outlined">lock</span>
+                            <p id="textoBloqueado2" class="textoBloqueado">Bloqueado</p>
+                        </div>
+                        <div class="wrapper">
+                            <h2 id="titulo-wrapper2" class="titulo-wrapper">Comentario</h2>
+                            <textarea disabled style="overflow: auto;" class="comentarioVeterinario" maxlength="350"
+                                spellcheck="false" placeholder="Inicia para desbloquear." required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion-iniciar">
+
+            <!-- CONTENIDO INICIAR -->
+            <div id="contenido-iniciar" class="contenido-iniciar">
+                <h6>¿Desea comenzar con la Cita?</h6>
+                <p class="textDescription">Si tu cliente ha llegado presione el botón <span
+                        style="color: #09c577; font-weight:500; font-size: 18px;">Iniciar</span></p>
+
+                <button onclick="comenzarCita()" id="comenzar-pendiente-btn" class="comenzar-pendiente-btn">
+                    <span class="material-symbols-outlined">play_circle</span>
+                    <p>Iniciar</p>
+                </button>
+            </div>
+
+            <!-- CONTENIDO INICIANDO -->
+            <div class="contenidoIniciando">
+                <h6>Iniciando en <span class="contadorIniciando">3</span> ...</h6>
+            </div>
+
+            <!-- CONTENIDO EN MARCHA -->
+            <div class="contenidoEnMarcha">
+                <div class="crono_wrapper">
+                    <h2 id='crono'>00:00:00</h2>
+                </div>
+                <button id="finalizar-cita-btn" class="finalizar-cita-btn" onclick="alertaFinalizarCita()">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <p>Finalizar</p>
+                </button>
+                <button id="cancelar-cita-btn" class="cancelar-cita-btn" onclick="cancelarCitaActiva()">
+                    <span class="material-symbols-outlined">close</span>
+                    <p>Cancelar</p>
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+<div id="fondoNegroBlur" class="fondoNegroBlur" onclick="cerrarCita();"></div>
+
+
+<script>
+    const tratamientoVeterinario = document.querySelector(".tratamientoVeterinario");
+    const comentarioVeterinario = document.querySelector(".comentarioVeterinario");
+
+    tratamientoVeterinario.addEventListener("keyup", e => {
+        tratamientoVeterinario.style.height = "63px";
+        let scHeight = e.target.scrollHeight;
+        tratamientoVeterinario.style.height = `${scHeight}px`;
+    });
+
+    comentarioVeterinario.addEventListener("keyup", e => {
+        comentarioVeterinario.style.height = "63px";
+        let scHeight = e.target.scrollHeight;
+        comentarioVeterinario.style.height = `${scHeight}px`;
+    });
+</script>
+
+<!-- Import Datatables -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
+<!-- Import Datetables extension responsive -->
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<!-- Configuracion Date Tables (pendientes) -->
+<script type="text/javascript" src="../../static/js/panelVeterinario/dateTables.js"></script>
+
+<!-- Alertas SWAL ALERT 2 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% endblock %}

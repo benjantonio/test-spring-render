@@ -1,0 +1,70 @@
+
+<div th:fragment="home">
+    
+    
+<!-- LINK CSS HOME -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/styleHome.css/}">
+
+<!-- Seccion Banner -->
+<section class="home-banner" id="home">
+
+    <div class="contenedor-banner">
+        <h3> ¡Bienvenido a <span>Mundo Patitas</span>!</h3>
+    </div>
+
+    <img th:src="@{/images/home-banner-curvas.png/}"  class="wave" alt="">
+
+</section>
+<!-- Fin Seccion Banner -->
+
+<!-- Sección Home About-->
+<section class="home-about">
+
+    <div class="imagen-about  imagen-about1">
+        <img th:src="@{/images/mascotasB3.jpg/}" alt="gatoPrueba">
+    </div>
+
+    <div class="imagen-about imagen-about2">
+        <img th:src="@{/images/mascotasBnew.jpg/}" alt="gatoPrueba">
+    </div>
+
+    <div class="contenedor-home contenedor-home1">
+        <h3>Encuentra a un <span>veterinario</span> cerca tuyo</h3>
+        <p>Puedes hacer Click en el botón del menú "Agendar Hora" para solicitar una hora. </p>
+        <div class="d-grid contenedor-btn ap-2 col-6 mx-auto">
+            <a type="button" href="{% url 'agendarHora' %}" class="btn btn-outline-success">Ir a Veterinarios</a>
+        </div>
+    </div>
+
+</section>
+
+<section class="home-about">
+
+
+
+    <div class="contenedor-home">
+        <h3 class="h3fot">Interactua en el <span>foro</span> con la comunidad</h3>
+        <p>Si tienes alguna dudas, puedes preguntar a otros dueños de mascotas. Los veterinarios también pueden responder!</p>
+        <div class="d-grid contenedor-btn ap-2 col-6 mx-auto">
+            <a type="button" href="{% url 'foro' %}" class="btn btn-outline-success">Ir a Foro</a>
+        </div>
+    </div>
+    <div class="imagen-about">
+        <img th:src="@{/images/mascotasB2.png/}" alt="gatoPrueba">
+    </div>
+
+
+</section>
+<!--Fin Sección Home About-->
+
+<!-- Botón go top -->
+
+<a class="gotopbtn" href=""><span class="material-symbols-outlined">
+    arrow_upward
+    </span></a>
+
+
+<!-- Fin Boton go top -->
+    
+</div>
+

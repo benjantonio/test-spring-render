@@ -1,0 +1,41 @@
+{% extends 'planilla.html' %} {% load static %} {% block content %}
+
+
+<div class="container-fluid inicio">
+    <h2>Inicio Sesión Mundo Patitas</h2>
+    <div class="login-error">
+        {% if form.errors %}
+        <p>Usuario y/o Contraseña Incorrectas. Vuelva a Intentarlo</p>
+        {% endif %}
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: green;text-transform:uppercase;list-style:none ;">{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+    <form class="form" method="POST">
+        {% csrf_token %}
+        <div class="row g-3">
+            <div class="col">
+                <label class="form-label" for="">Usuario</label>
+                <input class="form-control" type="text" name="username">
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col">
+                <label class="form-label" for="">Contraseña</label>
+                <input class="form-control" type="password" name="password">
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col">
+                <button type="submit" class="btn btn-success ">Entrar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

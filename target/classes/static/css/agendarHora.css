@@ -1,0 +1,716 @@
+/* >>>>>>>>> Joce <<<<<<<<<<*/
+
+body {
+    background: url("../img/fondoPatitasC.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+
+header {
+    display: grid;
+    /*Me permite mantener el Boton - Volver - centrado*/
+}
+
+/*CONTENEDOR PRINCIPAL*/
+.contenedor {
+    display: block;
+    opacity: 1;
+    justify-content: center;
+    transition: opacity .1s;
+    will-change: opacity;
+    top: 6%;
+    left: 14%;
+    right: 14%;
+    margin: auto 8rem 5rem 8rem;
+    text-align: center;
+    align-items: center;
+    border-radius: 50px;
+    z-index: 9999;
+    transition: all 600ms ease;
+
+}
+
+/*CUADRO PRINCIPAL SUPERIOR*/
+.cuadrito {
+    display: grid;
+    color: #3b3b3b;
+    grid-template-columns: auto 50%;
+    padding: 0;
+    gap: 1rem;
+
+}
+
+/*PRIMER CUADRO*/
+.cuadrito .cuadroFondo1 {
+    background: #f6f6f9da;
+    height: 100%;
+    padding: 4rem 1rem;
+    margin: 0;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif, 'Chewy', cursive;
+    box-shadow: 0.2rem 0.2rem 1rem 0.3rem #0000005d;
+}
+
+.cuadrito .cuadroFondo1 img {
+    margin-top: 2rem;
+    width: 65%;
+    border-radius: 100%;
+    box-shadow: 0.2rem 0.2rem 1rem 0.3rem #0000003b;
+}
+
+/*SEGUNDO CUADRO*/
+.cuadrito .cuadroFondo2 {
+    background: #f6f6f9da;
+    height: 100%;
+    padding: 1rem 4rem 1rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0.2rem 0.2rem 1rem 0.3rem #0000005d;
+}
+
+.cuadrito .cuadroFondo2 .formulario {
+    margin-top: 2rem;
+}
+
+/*CUADRO PRINCIPAL INFERIOR*/
+.cuadrito2 {
+    display: none;
+    /* SE MUESTRA AL HACER CLICK EN EL BOTON - BUSCAR HORA - */
+    background: #f6f6f9da;
+    color: #3b3b3b;
+    padding: 0;
+    grid-template-columns: auto auto;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0.2rem 0.2rem 1rem 0.3rem #0000005d;
+}
+
+.cuadrito2 h3 {
+    align-items: center;
+}
+
+.cuadrito2 .formulario {
+    justify-content: center;
+    width: 100%;
+
+}
+
+.cuadrito2 .sel1 {
+    margin-bottom: 20px;
+}
+
+.cuadrito2 .contenedor-card {
+    background: white;
+    margin: 20px;
+    padding: 2rem 1rem 1rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.2rem #00000017;
+    min-height: 8rem;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+.cuadrito2 .contenedor-card .info_vet p {
+    margin-top: 1rem;
+    overflow-wrap: break-word;
+}
+
+.cuadrito2 .contenedor-card .info_vet img {
+    margin-top: 6px;
+    object-fit: cover;
+    width: 7rem;
+}
+
+.cuadrito2 .contenedor-card .cuadroFormulario {
+    display: block;
+    justify-content: center;
+
+}
+
+/*PATITAS X VETERINARIO*/
+.cuadrito a {
+    text-decoration: none;
+}
+
+.cuadrito2 .contenedor-card .contenedor-patitas {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    margin: 0 2rem;
+    gap: 1rem;
+}
+
+.cuadrito2 .contenedor-card img {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+#huellaActiva1,
+#huellaActiva2,
+#huellaActiva3,
+#huellaActiva4,
+#huellaActiva5 {
+    display: none;
+}
+
+/* =================================================================================================================== 
+   ===================================================== BOTONES ===================================================== 
+   =================================================================================================================== */
+
+/* VOLVER */
+.btnVolver {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #27ba5f;
+    width: 7rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 14px;
+    cursor: pointer;
+    font-family: 'Titillium Web', sans-serif;
+    box-shadow: 0.1rem 0.1rem 0.8rem 0.1rem #00000044;
+}
+
+.btnVolver .btnA {
+    color: white;
+}
+
+/* BUSCAR HORA*/
+.cuadrito .btnContinuar {
+    position: relative;
+    display: none;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #27ba5f;
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 6px;
+    margin: 16px auto 16px auto;
+    cursor: pointer;
+}
+
+.cuadrito .btnContinuar .p-btn {
+    text-align: center;
+    margin: 0;
+    width: auto;
+}
+
+.cuadrito .btnContinuarApagado {
+    position: relative;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #72c29f;
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 6px;
+    margin: 16px auto 16px auto;
+}
+
+.cuadrito .btnContinuarApagado .p-btn {
+    text-align: center;
+    margin: 0;
+    width: auto;
+}
+
+/* CONTINUAR */
+.cuadrito2 .btnFinal {
+    position: relative;
+    display: none;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #27ba5f;
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 6px;
+    margin: 16px auto 16px auto;
+    cursor: pointer;
+}
+
+.cuadrito2 .btnFinal .p-btn {
+    text-align: center;
+    margin: 0;
+    width: auto;
+}
+
+.cuadrito2 .btnFinalDeshabilitado {
+    position: relative;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #72c29f;
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 6px;
+    margin: 16px auto 16px auto;
+}
+
+.cuadrito2 .btnFinalDeshabilitado .p-btn {
+    text-align: center;
+    margin: 0;
+    width: auto;
+}
+
+/* CONFIRMAR */
+.detalleFinal .btnConfirmar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #27ba5f;
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 6px;
+    margin: 16px auto 16px auto;
+    cursor: pointer;
+}
+
+.detalleFinal .btnConfirmar .p-btn {
+    text-align: center;
+    margin: 0;
+    width: auto;
+}
+
+/* CANCELAR */
+.detalleFinal .btnCancelar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background: #bb1e1e;
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    padding-left: 6px;
+    margin: 16px auto 16px auto;
+    cursor: pointer;
+}
+
+.detalleFinal .btnCancelar .p-btn {
+    text-align: center;
+    margin: 0;
+    width: auto;
+}
+
+/* ==== Animacion de botones ==== */
+
+.cuadrito .btnContinuar:hover {
+    background: #ffff;
+    color: #1d1d1d;
+    border: 0.1rem solid #068e53;
+    transition: all 150ms ease;
+}
+
+.btnVolver .p-btn {
+    text-align: center;
+    margin: 0;
+    width: auto;
+}
+
+.btnVolver:hover {
+    background: #ffff;
+    border: 0.1rem solid #068e53;
+    transition: all 150ms ease;
+    color: #1d1d1d;
+}
+
+.btnVolver:hover p {
+    color: #1d1d1d;
+}
+
+.cuadrito2 .btnFinal:hover {
+    background: #ffff;
+    color: #1d1d1d;
+    border: 0.1rem solid #068e53;
+    transition: all 150ms ease;
+}
+
+.detalleFinal .btnConfirmar:hover {
+    background: #ffff;
+    color: #1d1d1d;
+    border: 0.1rem solid #068e53;
+    transition: all 150ms ease;
+}
+
+.detalleFinal .btnCancelar:hover {
+    background: #ffff;
+    color: #1d1d1d;
+    border: 0.1rem solid #bb1e1e;
+    transition: all 150ms ease;
+}
+
+/* FONDO NEGRO BLUR*/
+#fondoNegroBlur {
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    width: 100%;
+    opacity: 0;
+    transition: opacity .1s;
+    will-change: opacity;
+    padding-bottom: 7vh;
+    padding-left: 2vw;
+    overflow-y: auto;
+    background: #0000005d;
+}
+
+/* DETALLE SOBRE BLUR*/
+.detalleFinal {
+    position: fixed;
+    display: none;
+    opacity: 0;
+    justify-content: center;
+    transition: opacity .1s;
+    will-change: opacity;
+    top: 6%;
+    left: 24%;
+    right: 24%;
+    padding: 1.2rem;
+    min-height: 30rem;
+    max-height: 90%;
+    overflow-y: auto;
+    overflow-x: auto;
+    margin: auto 20px;
+    text-align: center;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    z-index: 1000;
+    transition: all 600ms ease;
+    box-shadow: 0.2rem 0.2rem 4rem 1rem #0000001e;
+}
+
+
+
+.detalleFinal .fondo {
+    margin: 10px;
+}
+
+.detalleFinal .cardDetalle {
+    display: grid;
+    grid-template-columns: 13rem auto;
+    gap: 1rem;
+    color: #3b3b3b;
+}
+
+.detalleFinal .cardDetalle1 {
+    background: #f6f6f9;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.detalleFinal .cardDetalle1 img {
+    margin-top: 6px;
+    object-fit: cover;
+    width: 7rem;
+}
+
+.detalleFinal .cardDetalle1 .subTitulo {
+    padding-top: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.detalleFinal .cardDetalle1 p {
+    margin: 5px;
+    padding: 0;
+    font-size: 16px;
+    overflow-wrap: break-word;
+}
+
+.detalleFinal .cardDetalle2 {
+    background: #f6f6f9;
+    border-radius: 20px;
+}
+
+.detalleFinal .cardDetalle2 .sec1 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.detalleFinal .cardDetalle2 .sec1 .subTitulo {
+    padding-top: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.detalleFinal .cardDetalle2 .sec1 p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.detalleFinal .cardDetalle2 .sec2 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background: #ffffff;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.2rem #00000017;
+    min-height: 5rem;
+}
+
+.detalleFinal .cardDetalle2 .sec2 .subTitulo {
+    padding-top: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.detalleFinal .cardDetalle2 .sec2 p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.detalleFinal .cardDetalle2 .sec3 {
+    background: #ffffff;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0.2rem 0.2rem 0.5rem 0.2rem #00000017;
+    min-height: 5rem;
+}
+
+.detalleFinal .cardDetalle2 .sec3 .subTitulo {
+    padding-top: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.detalleFinal .cardDetalle2 .sec3 p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.detalleFinal .fondo2 {
+    margin: 10px;
+}
+
+.detalleFinal .fondo2 .cardfondo2 {
+    display: grid;
+    grid-template-columns: auto auto;
+    background: #f6f6f9;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.detalleFinal .cardfondo2 .fechaHoraS {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.detalleFinal .cardfondo2 .subTitulo {
+    padding-top: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.detalleFinal .cardfondo2 p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.detalleFinal .fondo3 {
+    margin: 10px;
+}
+
+.detalleFinal .fondo3 .cardfondo3 {
+    display: grid;
+    grid-template-columns: auto auto;
+    background: #f6f6f9;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.detalleFinal .fondo3 .cardfondo3 .subTitulo {
+    padding-top: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.detalleFinal .fondo3 .cardfondo3 p {
+    margin: 0;
+    padding: 0 10px;
+    font-size: 16px;
+    overflow-wrap: break-word;
+}
+
+.detalleFinal .botones {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+
+
+/* ===== PUDIN PUDIN ===== */
+
+@media screen and (max-width: 1115px) {
+    .contenedor {
+        margin: 0;
+    }
+
+    .detalleFinal{
+        left:10%;
+        right: 10%;
+    }
+
+}
+
+@media (max-width: 992px) {
+    .cuadrito {
+        display: grid;
+        grid-template-columns: 40% 60%;
+    }
+
+    .cuadrito .cuadroFondo1 {
+        padding: 3rem 1rem;
+    }
+
+    .cuadrito .cuadroFondo2 {
+        margin-right: 20px;
+    }
+
+    .cuadrito .cuadroFondo1 img {
+        width: 80%;
+    }
+
+    .cuadrito2 .contenedor-card {
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media (max-width: 750px) {
+    .cuadrito {
+        display: grid;
+        grid-template-columns: 30% 70%;
+    }
+
+    .cuadrito2 .contenedor-card .info_vet p {
+        font-size: 26px;
+    }
+
+    .detalleFinal{
+        left:5%;
+        right: 5%;
+    }
+
+}
+
+@media (max-width: 720px) {
+    .cuadrito2 {
+        padding: 0.1rem;
+    }
+
+    .cuadrito2 .contenedor-card {
+        display: block;
+    }
+
+    .cuadrito2 .contenedor-card .cuadroFormulario {
+        width: 100%;
+    }
+
+    .cuadrito2 .contenedor-card .info_vet {
+        font-size: 26px;
+        margin-top: 1rem;
+    }
+
+    
+
+
+}
+
+@media (max-width: 580px) {
+    .cuadrito {
+        display: block;
+    }
+
+    .cuadrito .cuadroFondo1 {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .cuadrito .cuadroFondo2 {
+        margin: 1rem;
+    }
+
+    .cuadrito2 {
+        margin: 1rem;
+    }
+
+    .detalleFinal .cardDetalle {
+  
+        grid-template-columns: auto;
+      
+    }
+
+    .detalleFinal{
+        left:0%;
+        right: 0%;
+    }
+}
+
+@media (max-width: 430px) {
+    .cuadrito .cuadroFondo2 {
+        padding: 10px;
+    }
+
+    .cuadrito .cuadroFondo2 .formulario {
+        font-size: 14px;
+    }
+
+    .cuadrito2 .contenedor-card .contenedor-patitas {
+        margin: 5px;
+    }
+
+}
+
+@media (max-width: 380px) {
+    .cuadrito2 {
+        margin: 1rem;
+    }
+
+    .cuadrito2 .contenedor-card {
+        margin: 8px;
+    }
+
+    .cuadrito2 .contenedor-card .cuadroFormulario {
+        font-size: 14px;
+    }
+
+    .cuadrito2 .contenedor-card .cuadroFormulario .sel1 .diaConsulta {
+        font-size: 15px;
+    }
+
+    .cuadrito2 .contenedor-card .cuadroFormulario .sel2 .horaConsulta {
+        font-size: 15px;
+    }
+
+    .cuadrito2 .contenedor-card .contenedor-patitas {
+        margin: 3px;
+        gap: 0.5rem;
+    }
+
+}
