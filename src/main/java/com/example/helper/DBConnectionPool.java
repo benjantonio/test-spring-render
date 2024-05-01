@@ -24,7 +24,7 @@ public class DBConnectionPool {
         
         ds = new BasicDataSource();
         ds.setDriverClassName(bundle.getString("spring.datasource.driver-class-name")); 
-        ds.setUsername(bundle.getString("spring.datasource.password"));  
+        ds.setUsername(bundle.getString("spring.datasource.username"));  
         ds.setPassword(bundle.getString("spring.datasource.password"));  
         ds.setUrl(bundle.getString("spring.datasource.url"));  
        

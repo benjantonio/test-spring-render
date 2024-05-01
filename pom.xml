@@ -65,6 +65,17 @@
             <version>2.15.0</version> <!-- Verifica la última versión en https://mvnrepository.com/artifact/com.maxmind.geoip2/geoip2 -->
         </dependency>
 
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
 
         
     </dependencies>

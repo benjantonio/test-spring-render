@@ -4,7 +4,7 @@
  */
 package com.example.dao;
 
-import com.example.dto.logDto;
+import com.example.dto.RegionDto;
 import com.example.helper.DBHelper;
 import com.example.helper.Parametro;
 import java.sql.SQLException;
@@ -21,31 +21,10 @@ import org.springframework.stereotype.Repository;
  * @author Benjantonio
  */
 @Repository
-public interface logDao extends CrudRepository<logDto, Long> {
+public interface RegionDao {
     
-    Log _log = LogFactory.getLog(logDao.class);
-     
-    public static int Guardar_Log(logDto log)
-    {
-        ArrayList parametros = new ArrayList();
-        parametros.add(new Parametro("p_ip", "String", log.getIp(), false));
-        parametros.add(new Parametro("p_zona", "String", log.getZona(), false));        
-        parametros.add(new Parametro("p_hora", "String", log.getHora(), false));
-        return Escalar("call SP_Guardar_Log(?,?,?)", parametros);
-    }     
-    
-    public static int Borrar_Log()
-    {
-        ArrayList parametros = new ArrayList();
-        return Escalar("call SP_Borrar_Log()", parametros);
-    }  
-    
-    public static ArrayList Listar_Logs()
-    {
-        ArrayList parametros = new ArrayList();
-        return ListaEntidad("call SP_Listar_Log()", parametros);
-    }
-        
+    Log _log = LogFactory.getLog(RegionDao.class);
+     /*
     private static ArrayList ListaEntidad(String query, List parametros)
     {
         ArrayList lista = new ArrayList();
@@ -77,6 +56,7 @@ public interface logDao extends CrudRepository<logDto, Long> {
         }
         return lista;
     } 
+*/
     
     private static int Escalar(String query, List parametros)
     {

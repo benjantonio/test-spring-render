@@ -1,4 +1,6 @@
-{% extends 'planilla.html' %} {% load static %} {% block content %}
+<th:block th:replace="head :: head"></th:block>
+<th:block th:replace="header :: header"></th:block>
+
 <div class="adopTitulo">
     <h1>Adopciones Mundo Patitas</h1>
     <h5>Ayuda a los animalitos a encontrar sus futuros dueños.
@@ -27,4 +29,7 @@
     {% endfor %}
 </div>
 {% else %}
-<h6 style="width: 100%;text-align:center; ">No se han realiza publiaciones. Si necesitas publicar un animalito te invitamos a realizar la publicación</h6>{% endif %} {%endblock%}
+<h6 style="width: 100%;text-align:center; ">No se han realiza publiaciones. Si necesitas publicar un animalito te invitamos a realizar la publicación</h6>{% endif %}
+
+
+<th:block th:replace="foot :: foot"></th:block>

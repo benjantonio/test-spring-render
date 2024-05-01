@@ -1,7 +1,11 @@
-com\example\helper\DBConnectionPool.class
 com\example\HolaSpringApplication.class
+com\example\helper\DBHelper.class
+com\example\dto\ComunaDto.class
+com\example\dao\RegionDao.class
+com\example\helper\DBConnectionPool.class
+com\example\web\loginController.class
 com\example\web\ControladorREST.class
 com\example\helper\Parametro.class
-com\example\helper\DBHelper.class
-com\example\dao\logDao.class
-com\example\dto\logDto.class
+com\example\dto\RegionDto.class
+com\example\dao\ComunaDao.class
+com\example\web\userController.class

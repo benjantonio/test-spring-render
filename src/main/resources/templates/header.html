@@ -1,0 +1,84 @@
+ <th:block th:fragment="header">
+<body>
+    <!--Estos 2 metodos envian el ancho del html a un javascript, con el cual se necesita leer en el panel cliente (para una aniamción)-->
+    <!--INICIO HEADER-->
+    <header>
+        <!-- BANNER -->
+        <div class="bannerTop">
+            <p class="pnormal">¿Tienes un centro médico?: ¡Trabaja con <span class="mundopatitas">Mundo Patitas</span>!</p>
+            <p class="presponsivo">¡Tu Centro Médico en <span class="mundopatitas">Mundo Patitas!</p>
+      <div class="contacto">
+        <span class="iconContacto material-symbols-outlined">
+          contact_support
+        </span>
+                <p class="contactonormal">(+569 82047779 | mundopatitas@gmail.com)</p>
+                <p class="contactoresponsivo">(mundopatitas@gmail.com)</p>
+        </div>
+        </div>
+        <!-- FIN BANNER -->
+        
+        <!-- MENU -->
+        <div class="menuContent">
+            <a href="#" class="brand">
+                <div class="logo">
+                    
+                    <img th:src="@{/images/logonew.png/}" type="image/png">
+                    <p class="description">Por la felicidad de tu mascota <span class="icon material-symbols-outlined">
+              favorite
+            </span> </p>
+                </div>
+            </a>
+
+            <nav class="menu">
+
+                <ul class="ulBotones">
+                    <li><a href="/">Inicio</a></li>
+
+                    <li><a href="/redirect/adopciones">Adoptar</a></li>
+                   
+                    <li><a href="/redirect/foro">Foro</a></li>
+                    <!-- {% if request.user.perfil_id == 1 %} --> 
+                    <li><a href="/redirect/agendarHora">Agendar Hora</a></li>
+                    <li><a href="{% url 'panelcli' %}">Mi Panel</a></li>
+                    <!-- {% elif request.user.perfil_id == 2 %} -->
+                    <li><a href="{% url 'veterinarios' %}">Veterinarios</a></li>
+                    <li><a href="{% url 'panelcentro' %}">Mi Panel</a></li>
+                    <!-- {% endif %} -->
+                </ul>
+
+                <ul class="ulLogin">
+
+                    <!-- {% if user.is_authenticated %} -->
+                    <!--<p class="username">{{user.username}}</p> -->
+                    <!-- {% else %} -->
+                    <p>¿Tienes una cuenta?</p>
+                    <div class="contenedorLiLogin">
+                        <li><a href="login/redirect/login">Iniciar Sesion</a></li>
+                        <p>o</p>
+                        <li><a href="login/redirect/registro">Registrarse</a></li>
+
+                    </div>
+                    <!-- {% endif %} -->
+                </ul>
+
+                <div class="btn ">
+                    <i class="fas fa-times close-btn"></i>
+                </div>
+
+
+            </nav>
+
+
+            <div class="btn btn-abrir-menu">
+                <i class="fas fa-bars menu-btn"></i>
+            </div>
+        </div>
+
+
+    </header>
+    <!--FIN HEADER-->
+
+
+    <div class="contenedor">
+        
+        </th:block>

@@ -1,4 +1,5 @@
-{% extends 'planilla.html' %} {% load static %} {% block content %}
+<th:block th:replace="head :: head"></th:block>
+<th:block th:replace="header :: header"></th:block>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
@@ -297,4 +298,4 @@
 
 
 <script src="{% static 'js/foro.js' %}"></script>
-{% endblock %}
+<th:block th:replace="foot :: foot"></th:block>

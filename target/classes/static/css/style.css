@@ -507,6 +507,7 @@ html {
 }
 
 
+
 /*FIN LOGIN*/
 
 
@@ -635,7 +636,7 @@ tr:hover {
     color: red;
 }
 
-.res span {
+.error-reg {
     color: red;
     font-size: 10px;
 }
@@ -646,6 +647,10 @@ tr:hover {
 
 .border-succes {
     border: 2px solid green;
+}
+
+.asterisco{
+    color:red;
 }
 
 
@@ -1018,8 +1023,8 @@ footer {
 .part1-foro {
     padding: 0;
     display: grid;
-    background: rgb(255, 255, 255); 
-    width: 100%; 
+    background: rgb(255, 255, 255);
+    width: 100%;
     height: auto;
     border-radius: 10px;
     text-align: center;
@@ -1063,14 +1068,15 @@ footer {
 
 
 .agregarPublicacion{
-    margin: 15px 0 0 0; 
+    margin: 15px 0 0 0;
     text-align: center;
-    width: 6rem; 
+    width: 6rem;
     height: 2rem;
-    background: #0cac49; 
-    color: white; 
+    background: #0cac49;
+    color: white;
     border-radius: 10px;
-    border: solid 0px #ffffff;;
+    border: solid 0px #ffffff;
+    ;
 }
 
 
@@ -1365,14 +1371,15 @@ footer {
 }
 
 .btn-enviarResp{
-    margin: 0 0 5px 0; 
+    margin: 0 0 5px 0;
     text-align: center;
-    width: 6rem; 
+    width: 6rem;
     height: 2rem;
-    background: white; 
-    color: #3fac30; 
+    background: white;
+    color: #3fac30;
     border-radius: 10px;
-    border: solid 0px #ffffff;;
+    border: solid 0px #ffffff;
+    ;
 }
 
 .respuesta-off{
@@ -1394,19 +1401,26 @@ footer {
 }
 
 .btn-enviarResp-off{
-    margin: 0 0 5px 0; 
+    margin: 0 0 5px 0;
     text-align: center;
-    width: 6rem; 
+    width: 6rem;
     height: 2rem;
-    background: rgb(202, 202, 202); 
-    color: #242424; 
+    background: rgb(202, 202, 202);
+    color: #242424;
     border-radius: 5px;
-    border: solid 0px #ffffff;;
+    border: solid 0px #ffffff;
+    ;
 }
 
-
-
-
+/* SELECT2 */
+.select2 .select2-selection{
+    height: 35px;
+}
+.select2-selection__rendered {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 @media screen and (max-width: 1200px) {
     .contenedorPublicacion {
