@@ -54,7 +54,7 @@ public class loginController {
                 throw new AssertionError();
         }
 
-        return "/registration/" + seleccion;
+        return seleccion;
     }
 
     @RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST)
