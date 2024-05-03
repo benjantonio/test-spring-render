@@ -29,6 +29,7 @@ public interface UsuarioDao {
     public static int Guardar_Usuario(UsuarioDto user) {
         ArrayList parametros = new ArrayList();
         parametros.add(new Parametro("p_username", "String", user.getUsername(), false));
+        parametros.add(new Parametro("p_password", "String", user.getPassword(), false));
         parametros.add(new Parametro("p_email", "String", user.getEmail(), false));
         parametros.add(new Parametro("p_nombres", "String", user.getNombres(), false));
         parametros.add(new Parametro("p_apellidos", "String", user.getApellidos(), false));
@@ -39,7 +40,7 @@ public interface UsuarioDao {
         parametros.add(new Parametro("p_perfil", "int", String.valueOf(user.getPerfil()), false));
         parametros.add(new Parametro("p_usuario_activo", "int", String.valueOf(user.getUsuarioActivo()), false));
         parametros.add(new Parametro("p_usuario_administrador", "int", String.valueOf(user.getUsuarioAdministrador()), false));
-        return Escalar("call SP_Guardar_Usuario(?,?,?,?,?,?,?,?,?,?,?)", parametros);
+        return Escalar("call SP_Guardar_Usuario(?,?,?,?,?,?,?,?,?,?,?,?)", parametros);
     }
 
     /*
@@ -50,6 +51,14 @@ public interface UsuarioDao {
     }  
     
      */
+    public static UsuarioDto Log_User(UsuarioDto user) {
+        ArrayList parametros = new ArrayList();
+        parametros.add(new Parametro("p_username", "String", user.getUsername(), false));        
+        parametros.add(new Parametro("p_password", "String", user.getPassword(), false));
+        return (UsuarioDto)ListaEntidad("call SP_Log_User(?,?)", parametros).get(0);
+    }
+    
+    
     public static ArrayList Listar_Comunas() {
         ArrayList parametros = new ArrayList();
         return ListaEntidad("call SP_Listar_Comunas()", parametros);
@@ -67,6 +76,7 @@ public interface UsuarioDao {
                 aux = new UsuarioDto();
                 aux.setIdUsuario(crs.getInt("id_usuario"));
                 aux.setUsername(crs.getString("username"));
+                aux.setPassword(crs.getString("password"));
                 aux.setEmail(crs.getString("email"));
                 aux.setNombres(crs.getString("nombres"));
                 aux.setApellidos(crs.getString("apellidos"));

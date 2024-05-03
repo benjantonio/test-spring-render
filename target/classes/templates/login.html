@@ -5,11 +5,13 @@
 
 <div class="container-fluid inicio">
     <h2>Inicio Sesión Mundo Patitas</h2>
-    <div class="login-error">
-        {% if form.errors %}
+
+    <div class="login-error" th:if="${logResult == 'E'}">
+
         <p>Usuario y/o Contraseña Incorrectas. Vuelva a Intentarlo</p>
-        {% endif %}
+
     </div>
+    <!--
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -17,27 +19,33 @@
             {% endfor %}
     </ul>
     {% endif %}
-    <form class="form" method="POST">
-        {% csrf_token %}
+    -->
+    <form id="idFormLogUser" class="form" action="/login/logUsuario" method="POST" style="margin-top: 15px !important;"> 
+        <!--{% csrf_token %}--> 
         <div class="row g-3">
             <div class="col">
                 <label class="form-label" for="">Usuario</label>
-                <input class="form-control" type="text" name="username">
+                <input class="form-control" id="idUsername" type="text" name="username">
             </div>
         </div>
         <div class="row g-3">
             <div class="col">
                 <label class="form-label" for="">Contraseña</label>
-                <input class="form-control" type="password" name="password">
+                <input class="form-control" id="idPassword" type="password" name="password">
             </div>
         </div>
         <div class="row g-3">
             <div class="col">
-                <button type="submit" class="btn btn-success ">Entrar</button>
+                <button id="idBtnEntrar" type="button" class="btn btn-success ">Entrar</button>
             </div>
         </div>
     </form>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
 
 <th:block th:replace="foot :: foot"></th:block>

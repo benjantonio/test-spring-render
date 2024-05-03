@@ -60,7 +60,7 @@ public class loginController {
     @RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST)
     public void registrarUsuario(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-     
+
         //Inicio variables
         JSONObject json = new JSONObject();
 
@@ -78,11 +78,11 @@ public class loginController {
             String direccion = request.getParameter("direccion");
             int perfil = Integer.parseInt(request.getParameter("perfil"));
             int comuna = Integer.parseInt(request.getParameter("comuna"));
-            
-            
+
             UsuarioDto us = new UsuarioDto();
-            
+
             us.setUsername(usuario);
+            us.setPassword(password);
             us.setNombres(nombre);
             us.setApellidos(apellido);
             us.setCelular(Integer.parseInt(celular));
@@ -91,11 +91,11 @@ public class loginController {
             us.setDireccion(direccion);
             us.setPerfil(perfil);
             us.setComuna(comuna);
-            
+
             int idUserNew = UsuarioDao.Guardar_Usuario(us);
 
             resultado = "S , Guardado con éxito.";
-            
+
             json.put("resultado", resultado);
             json.put("idUserNew", idUserNew);
             //json.put("listaPetSerie", listaPetSerie);
@@ -109,6 +109,37 @@ public class loginController {
             //request.setAttribute("avisoMsg", avisoMsg);
             _log.error(e);
         }
+    }
+
+    @RequestMapping(value = "/logUsuario", method = RequestMethod.POST)
+    public String logUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+
+        String seleccion = "";
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        UsuarioDto userAux = new UsuarioDto();
+
+        userAux.setUsername(username);
+        userAux.setPassword(password);
+
+        userAux = UsuarioDao.Log_User(userAux);
+
+        if (userAux.getIdUsuario() > 0) {
+            System.out.println("existe");
+            request.setAttribute("userActivo", userAux);
+            request.setAttribute("logResult", "S");
+            seleccion = "panelcli";
+        } else {
+            request.setAttribute("logResult", "E");
+            seleccion = "login";
+        }
+
+        System.out.println("username: " + username + " | password: " + password);
+
+        return seleccion;
     }
 
 }

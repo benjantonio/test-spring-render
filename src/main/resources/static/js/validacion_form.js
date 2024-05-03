@@ -62,10 +62,12 @@ $(document).ready(function (e) {
                                 Swal.fire({
                                     position: 'center',
                                     icon: 'success',
-                                    html: '<span style="font-size: 20px;">Usuario registrado con éxito. \n-ID USUARIO: '+idUserNew+'</span>',
+                                    html: '<span style="font-size: 20px;">Usuario registrado con éxito. \n-ID USUARIO: ' + idUserNew + '</span>',
                                     confirmButtonColor: '#898989'
+                                }).then(() => {
+                                    $("#idFormGoLogin").submit();
                                 });
-                                console.log("respuesta S. Creado con éxito. | ID USUARIO AGREGADO: ",idUserNew);
+                                console.log("respuesta S. Creado con éxito. | ID USUARIO AGREGADO: ", idUserNew);
                             } else {
                                 Swal.fire({
                                     position: 'center',
