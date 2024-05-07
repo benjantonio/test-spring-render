@@ -4,8 +4,10 @@ com\example\dto\ComunaDto.class
 com\example\dao\RegionDao.class
 com\example\helper\DBConnectionPool.class
 com\example\web\loginController.class
+com\example\dto\UsuarioDto.class
 com\example\web\ControladorREST.class
 com\example\helper\Parametro.class
+com\example\dao\UsuarioDao.class
 com\example\dto\RegionDto.class
 com\example\dao\ComunaDao.class
 com\example\web\userController.class

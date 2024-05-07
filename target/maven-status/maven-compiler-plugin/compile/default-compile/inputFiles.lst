@@ -1,9 +1,11 @@
 C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\dto\RegionDto.java
 C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\dao\ComunaDao.java
-C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\dto\ComunaDto.java
-C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\helper\DBConnectionPool.java
+C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\dao\UsuarioDao.java
 C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\web\loginController.java
 C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\dao\RegionDao.java
+C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\dto\ComunaDto.java
+C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\helper\DBConnectionPool.java
+C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\dto\UsuarioDto.java
 C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\helper\DBHelper.java
 C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\web\userController.java
 C:\Users\Benjantonio\Documents\Proyectos\HolaMundoSpringBoot\src\main\java\com\example\helper\Parametro.java
