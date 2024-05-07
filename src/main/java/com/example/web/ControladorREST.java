@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping({"/","/home","/status"})
 public class ControladorREST {
     
     @GetMapping("/")
