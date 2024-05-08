@@ -5,7 +5,6 @@ RUN mvn dependency:go-offline
 
 FROM openjdk:17-alpine
 WORKDIR /app
-COPY --from=build /target/HolaSpring-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build app/target/HolaSpring-0.0.1-SNAPSHOT.jar benjantonio.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
-
+ENTRYPOINT ["java","-jar","benjantonio.jar"]
